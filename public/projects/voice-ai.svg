@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360">
+  <rect width="720" height="360" fill="#FAF9F5"/>
+  <text x="36" y="56" font-family="Segoe UI, system-ui, sans-serif" font-size="13" letter-spacing="3" fill="#6B7280" font-weight="700">VOICE AGENT · 24/7</text>
+  <rect x="36" y="145" width="188" height="70" rx="12" fill="#FFFFFF" stroke="#D9D6CE" stroke-width="1.5"/>
+  <text x="130" y="176" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="600" fill="#1B2233">Incoming call</text>
+  <text x="130" y="197" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#6B7280">any hour</text>
+  <path d="M 228 180 L 258 180" stroke="#2653B8" stroke-width="2"/>
+  <polygon points="258,174 270,180 258,186" fill="#2653B8"/>
+  <rect x="266" y="145" width="188" height="70" rx="12" fill="#2653B8"/>
+  <text x="360" y="176" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="600" fill="#FFFFFF">Voice agent</text>
+  <text x="360" y="197" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#C7D4F5">Retell · natural conversation</text>
+  <path d="M 458 180 L 488 180" stroke="#2653B8" stroke-width="2"/>
+  <polygon points="488,174 500,180 488,186" fill="#2653B8"/>
+  <rect x="496" y="145" width="188" height="70" rx="12" fill="#FFFFFF" stroke="#D9D6CE" stroke-width="1.5"/>
+  <text x="590" y="176" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="15" font-weight="600" fill="#1B2233">Appointment booked</text>
+  <text x="590" y="197" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#2E8B57">calendar invite sent</text>
+</svg>

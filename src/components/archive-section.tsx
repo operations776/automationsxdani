@@ -1,93 +1,134 @@
 import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github, ChevronDown } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { ExternalLink, ChevronDown, ArrowRight } from 'lucide-react';
 import { asset } from '@/lib/asset';
 
 interface ArchiveProject {
   id: string;
   title: string;
   description: string;
+  detail: string[];
   technologies: string[];
-  image?: string;
+  image: string;
   liveUrl?: string;
-  githubUrl?: string;
 }
 
 const PROJECTS: ArchiveProject[] = [
   {
-    id: 'zimedar',
-    title: 'ZimedarDrive: Edge AI driver assistant',
-    description: 'Final year project: real-time traffic sign recognition and lane detection running on-device on mobile GPUs.',
-    technologies: ['Kotlin', 'TensorFlow Lite', 'YOLOv11', 'OpenCV'],
-    githubUrl: 'https://github.com/Daniyal1234-alt',
-  },
-  {
     id: 'legal-intake',
     title: 'Legal tech intake automation',
-    description: 'Instagram and TikTok lead automation for law firms with evidence collection and Casepeer CRM sync.',
-    technologies: ['n8n', 'OpenAI', 'Instagram API', 'Casepeer'],
+    description: 'DM-to-case intake for law firms: ManyChat capture, AI-drafted replies, follow-up sequences, Casepeer filing.',
+    detail: [
+      'Law firm leads start as DMs. ManyChat captured incoming messages from Instagram, TikTok, and Facebook Messenger, and AI drafted the responses so nobody sat waiting on a paralegal.',
+      'Leads that went quiet entered follow-up sequences tuned per channel. Leads that engaged flowed into a full intake sequence: case details collected step by step, evidence gathered, everything filed into Casepeer.',
+      'The firm only spent human time on qualified, documented claimants.',
+    ],
+    technologies: ['ManyChat', 'n8n', 'OpenAI', 'Casepeer', 'Meta channels'],
     image: 'projects/lead-intake-law.jpg',
   },
   {
     id: 'invoice-processing',
     title: 'Multi-entity invoice processing',
-    description: 'Intelligent invoice routing across three company entities with PDF parsing, AI GL coding, and Xero submission.',
+    description: 'Replaced an outsourced bookkeeping firm for a company running four entities across four continents.',
+    detail: [
+      'The client ran four entities across North America, South America, Europe, and Asia, with roughly 20 invoices landing every day and an external bookkeeping company processing them by hand.',
+      'The automation took the job over end to end: it receives each invoice, extracts the data, assigns the right GL code, account, and tax treatment for the right entity, and files it into Xero.',
+      'The separate bookkeeping company stopped being needed. Misroutes dropped to near zero.',
+    ],
     technologies: ['n8n', 'OpenAI', 'Xero API', 'PostgreSQL'],
     image: 'projects/xero-invoices.jpg',
   },
   {
     id: 'lead-unification',
     title: 'Leads to Odoo CRM pipeline',
-    description: 'Multi-source lead intake from Facebook Ads, WordPress, and webhooks with dedup and Odoo CRM integration.',
-    technologies: ['n8n', 'Facebook API', 'Odoo CRM'],
+    description: 'WordPress forms, ManyChat conversations, and Meta lead ads, all landing in one Odoo queue.',
+    detail: [
+      'Leads used to die in five separate inboxes. Anyone who filled a WordPress form, messaged through ManyChat, or came in from a Meta lead ad was captured the moment they arrived.',
+      'Each lead was normalised, deduplicated, and pushed straight into the Odoo CRM with its source attached, so the sales team picked up every conversation from one queue with full context.',
+    ],
+    technologies: ['n8n', 'WordPress', 'Meta Lead Ads', 'ManyChat', 'Odoo CRM'],
     image: 'projects/leads-to-odoo.jpg',
   },
   {
     id: 'rag-agent',
     title: 'RAG agent with Pinecone',
-    description: 'Retrieval-augmented chatbot with Pinecone vector store, OpenAI embeddings, and window buffer memory.',
-    technologies: ['n8n', 'OpenAI', 'Pinecone'],
+    description: 'Documents in, grounded answers out: a retrieval-augmented chatbot with conversation memory.',
+    detail: [
+      'Documents get embedded into a Pinecone vector store. The chatbot answers questions with retrieval-augmented responses, so every answer is grounded in the actual source material instead of model guesswork.',
+      'Window buffer memory keeps the conversation coherent across turns. A simple, reliable pattern that turns a pile of documents into something a team can actually ask questions to.',
+    ],
+    technologies: ['n8n', 'OpenAI', 'Pinecone', 'Embeddings'],
     image: 'projects/rag-agent.jpg',
   },
   {
     id: 'ebay-scraping',
-    title: 'Agentic eBay scraping system',
-    description: 'Gemini-driven scraper using reflection and planning patterns to extract messy product specifications.',
-    technologies: ['n8n', 'Gemini', 'Agentic patterns'],
+    title: 'Agentic eBay listing sync',
+    description: 'A European used-battery marketplace, kept in sync with 10 to 20 eBay supplier stores automatically.',
+    detail: [
+      'The client runs a European marketplace for used batteries, reselling stock listed by 10 to 20 eBay businesses. Their team opened each store manually, checked what was listed, and re-listed items on their own site. Every day.',
+      'The agentic scraper took that over completely: it walks each store, extracts messy, inconsistent product specifications using Gemini with reflection and planning patterns, and keeps the marketplace catalogue in sync.',
+      'A week of manual listing work per cycle became an overnight job with no human in the loop.',
+    ],
+    technologies: ['n8n', 'Gemini', 'Agentic patterns', 'Web scraping'],
+    image: 'projects/ebay-scraping.svg',
   },
   {
     id: 'voice-ai',
-    title: 'Voice AI appointment agents',
-    description: 'Retell AI conversational agents handling appointment booking for a Dutch client, end to end.',
+    title: 'Voice AI appointment agent',
+    description: 'A voice agent that answers, qualifies, and books appointments around the clock.',
+    detail: [
+      'A Dutch client needed calls answered and appointments booked without hiring for it. Calls came in at all hours; the humans did not.',
+      'The Retell-based voice agent picks up, holds a natural conversation, qualifies the caller, and books straight into the calendar, day or night. Missed calls stopped being a revenue leak, with zero added headcount.',
+    ],
     technologies: ['Retell AI', 'n8n', 'Calendar APIs'],
+    image: 'projects/voice-ai.svg',
   },
   {
     id: 'custom-crm',
     title: 'Custom CRM & lead engine',
-    description: 'Multi-source lead aggregation from Google Maps, web search, and Instagram with a custom-built CRM UI.',
-    technologies: ['React', 'Supabase', 'n8n'],
+    description: 'Multi-source lead aggregation from Google Maps, web search, and Instagram, with its own CRM interface.',
+    detail: [
+      'Leads scattered across Google Maps scrapes, web search, and Instagram meant nobody worked a single list. The lead engine pulls from all three sources, normalises and deduplicates, and lands everything in a custom-built CRM UI.',
+      'A small team got one working queue instead of three spreadsheets.',
+    ],
+    technologies: ['React', 'Supabase', 'n8n', 'Google Maps API'],
+    image: 'projects/custom-crm.svg',
     liveUrl: 'https://aldar-akzrkkyqd-danis-projects-9a3cfe24.vercel.app/',
   },
   {
     id: 'survey-automation',
     title: 'Survey automation pipeline',
-    description: 'Automated survey distribution with Google Drive integration, email tracking, and Typeform response handling.',
-    technologies: ['n8n', 'Gmail', 'Typeform'],
+    description: 'Survey distribution, tracking, and response collection wired end to end.',
+    detail: [
+      'Survey assets come in from Google Drive, personalised email sends go out with tracking, and Typeform responses flow back into the dataset automatically.',
+      'What used to be a manual mail-merge-and-chase cycle became a pipeline the team just watches.',
+    ],
+    technologies: ['n8n', 'Gmail', 'Typeform', 'Google Drive'],
     image: 'projects/survey-automation.jpg',
   },
   {
     id: 'battery-research',
     title: 'Battery research agent',
-    description: 'Multi-step research automation with AI-powered analysis and structured data extraction.',
-    technologies: ['n8n', 'OpenAI', 'Web scraping'],
+    description: 'Multi-step research automation compiling structured battery product data from the open web.',
+    detail: [
+      'Built for the same used-battery marketplace operation as the eBay sync: a multi-step research agent that gathers battery product data from the web, extracts structured specifications, and compiles research-ready datasets.',
+      'Product research that used to be an intern-week became a scheduled run.',
+    ],
+    technologies: ['n8n', 'OpenAI', 'Web scraping', 'Data extraction'],
     image: 'projects/battery-research.jpg',
   },
   {
     id: 'content-generation',
     title: 'Content generation pipeline',
-    description: 'SEO article generation with AI text and images publishing straight to WordPress.',
-    technologies: ['n8n', 'OpenAI', 'WordPress API'],
+    description: 'SEO articles with AI-generated images, published to WordPress on schedule.',
+    detail: [
+      'Keyword brief in, structured SEO article out, with AI-generated images attached and the whole thing published to WordPress on schedule.',
+      'A publishing calendar that runs without a writer in the loop for the volume layer, leaving humans for the pieces that need a human.',
+    ],
+    technologies: ['n8n', 'OpenAI', 'DALL-E', 'WordPress API'],
+    image: 'projects/content-generation.svg',
   },
 ];
 
@@ -95,6 +136,7 @@ const VISIBLE_COUNT = 6;
 
 const ArchiveSection = () => {
   const [showAll, setShowAll] = useState(false);
+  const [active, setActive] = useState<ArchiveProject | null>(null);
   const visible = showAll ? PROJECTS : PROJECTS.slice(0, VISIBLE_COUNT);
 
   return (
@@ -114,25 +156,25 @@ const ArchiveSection = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {visible.map((project) => (
-              <div
+              <button
                 key={project.id}
-                className="rounded-xl bg-card border border-border shadow-sm overflow-hidden hover-lift flex flex-col"
+                type="button"
+                onClick={() => setActive(project)}
+                className="text-left rounded-xl bg-card border border-border shadow-sm overflow-hidden hover-lift flex flex-col focus:outline-none focus:ring-2 focus:ring-ring"
               >
-                {project.image && (
-                  <div className="h-32 overflow-hidden border-b border-border bg-muted">
-                    <img
-                      src={asset(project.image)}
-                      alt={project.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover object-top"
-                    />
-                  </div>
-                )}
+                <div className="h-36 overflow-hidden border-b border-border bg-muted">
+                  <img
+                    src={asset(project.image)}
+                    alt={project.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
                 <div className="p-5 space-y-3 flex-1 flex flex-col">
                   <h3 className="font-semibold text-sm text-foreground">{project.title}</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed flex-1">{project.description}</p>
                   <div className="flex flex-wrap gap-1.5">
-                    {project.technologies.map((tech) => (
+                    {project.technologies.slice(0, 4).map((tech) => (
                       <Badge
                         key={tech}
                         variant="outline"
@@ -142,32 +184,12 @@ const ArchiveSection = () => {
                       </Badge>
                     ))}
                   </div>
-                  {(project.liveUrl || project.githubUrl) && (
-                    <div className="flex gap-3 pt-1">
-                      {project.liveUrl && (
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:text-primary-hover transition-colors"
-                        >
-                          <ExternalLink className="w-3 h-3" /> Live
-                        </a>
-                      )}
-                      {project.githubUrl && (
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:text-primary-hover transition-colors"
-                        >
-                          <Github className="w-3 h-3" /> Code
-                        </a>
-                      )}
-                    </div>
-                  )}
+                  <span className="inline-flex items-center gap-1 text-xs font-medium text-primary pt-1">
+                    Read the breakdown
+                    <ArrowRight className="w-3 h-3" />
+                  </span>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
 
@@ -185,6 +207,50 @@ const ArchiveSection = () => {
           )}
         </div>
       </div>
+
+      {/* Breakdown dialog */}
+      <Dialog open={!!active} onOpenChange={(open) => !open && setActive(null)}>
+        <DialogContent className="max-w-lg max-h-[85vh] overflow-y-auto">
+          {active && (
+            <>
+              <div className="rounded-lg overflow-hidden border border-border -mt-1 mb-1">
+                <img src={asset(active.image)} alt={active.title} className="w-full h-auto object-cover" />
+              </div>
+              <DialogHeader>
+                <DialogTitle className="font-heading text-xl text-left">{active.title}</DialogTitle>
+              </DialogHeader>
+              <div className="space-y-3">
+                {active.detail.map((para, i) => (
+                  <p key={i} className="text-sm text-muted-foreground leading-relaxed">
+                    {para}
+                  </p>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-1.5 pt-1">
+                {active.technologies.map((tech) => (
+                  <Badge
+                    key={tech}
+                    variant="outline"
+                    className="font-mono text-[10px] border-border text-muted-foreground"
+                  >
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
+              {active.liveUrl && (
+                <a
+                  href={active.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary-hover transition-colors"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" /> Open the live build
+                </a>
+              )}
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

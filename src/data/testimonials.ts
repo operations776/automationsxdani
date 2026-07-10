@@ -50,8 +50,8 @@ export const RESULTS: ResultCard[] = [
   },
   {
     metric: 'Hours to minutes',
-    headline: 'Invoice processing across three entities',
+    headline: 'Invoice processing across four entities',
     detail:
-      'AI reads each PDF, assigns the GL code, and files it into Xero. Misroutes near zero.',
+      'Replaced an outsourced bookkeeping firm: AI reads each invoice, assigns GL codes and tax treatment, and files it into Xero. Misroutes near zero.',
   },
 ];

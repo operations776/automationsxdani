@@ -47,8 +47,8 @@ const ENGAGEMENTS: Engagement[] = [
     linkedinUrl: 'https://www.linkedin.com/company/eynvision',
     period: '2025 to 2026',
     outcomes: [
-      'Cut invoice processing from hours of manual entry to minutes: AI reads each PDF, assigns the GL code, and files it into Xero across three company entities.',
-      'Brought misrouted invoices to near zero with intelligent entity routing.',
+      'Replaced a client\'s outsourced bookkeeping firm with an automated pipeline: roughly 20 invoices a day across four entities spanning North America, South America, Europe, and Asia.',
+      'AI reads each invoice, extracts the data, assigns the right GL code, account, and tax treatment per entity, and files it into Xero. Misroutes near zero.',
     ],
     technologies: ['n8n', 'OpenAI', 'Xero API', 'PostgreSQL'],
   },
@@ -76,8 +76,8 @@ const ENGAGEMENTS: Engagement[] = [
     linkedinUrl: 'https://www.linkedin.com/company/trilles-ai',
     period: '2024 to 2026',
     outcomes: [
-      'Built legal intake that never sleeps: Instagram and TikTok leads captured, evidence collected, and filed into Casepeer around the clock.',
-      'Shipped an agentic eBay scraper that cleared a week of manual spec extraction overnight, using reflection and planning patterns on Gemini.',
+      'Built legal intake that never sleeps: ManyChat capturing DMs across Instagram, TikTok, and Messenger, AI-drafted replies, follow-up sequences, and case evidence filed into Casepeer around the clock.',
+      'Kept a European used-battery marketplace in sync with 10 to 20 eBay supplier stores: an agentic scraper cleared a week of manual listing work overnight, using reflection and planning patterns on Gemini.',
       'Deployed voice agents that answered and booked appointments 24/7 for a Dutch client, with no added headcount.',
       'Led the delivery team across both client portfolios.',
     ],
