@@ -1,150 +1,118 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Download } from 'lucide-react';
+import { Menu, X, Mail } from 'lucide-react';
+import { gmailCompose } from '@/lib/contact';
+
+const NAV_ITEMS = [
+  { to: '/work', label: 'Work' },
+  { to: '/testimonials', label: 'Testimonials' },
+  { to: '/blog', label: 'Blog' },
+  { to: '/#about', label: 'About' },
+  { to: '/#contact', label: 'Contact' },
+];
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 24);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on resize
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setIsMobileMenuOpen(false);
-      }
+      if (window.innerWidth >= 768) setIsMobileMenuOpen(false);
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMobileMenuOpen(false);
-  };
-
-  const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' },
-  ];
-
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? 'glass shadow-lg'
-        : 'bg-transparent'
-        }`}>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled ? 'bg-background/85 backdrop-blur-md border-b border-border shadow-sm' : 'bg-background/60 backdrop-blur-sm'
+        }`}
+      >
         <div className="container mx-auto px-6">
-          <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo */}
-            <button
-              onClick={() => scrollToSection('home')}
-              className="flex items-center gap-2 group"
-            >
-              <span className="text-xl font-bold font-heading text-foreground group-hover:text-primary transition-colors">
-                Daniyal
+          <div className="flex items-center justify-between h-16">
+            {/* Wordmark */}
+            <Link to="/" className="flex items-center gap-2 group">
+              <span className="w-2 h-2 rounded-full bg-success" />
+              <span className="font-mono text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                daniyal.aziz
               </span>
-              <span className="text-xl font-bold font-heading gradient-text">
-                Aziz
-              </span>
-            </button>
+            </Link>
 
-            {/* Desktop Navigation */}
+            {/* Desktop */}
             <div className="hidden md:flex items-center gap-1">
-              {navItems.map((item) => (
+              {NAV_ITEMS.map((item) => (
                 <Button
-                  key={item.id}
+                  key={item.to}
                   variant="ghost"
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-300 px-4"
+                  size="sm"
+                  asChild
+                  className="text-muted-foreground hover:text-foreground hover:bg-muted px-3"
                 >
-                  {item.label}
+                  <Link to={item.to}>{item.label}</Link>
                 </Button>
               ))}
-              <Button
-                size="sm"
-                asChild
-                className="ml-4 bg-primary hover:bg-primary-hover text-primary-foreground"
-              >
-                <a
-                  href="https://drive.google.com/file/d/1mF4fqygtJM7HVC3soUSDT2DDjkwD6Oyg/view?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Download className="w-4 h-4 mr-2" />
-                  CV
+              <Button size="sm" asChild className="ml-3 bg-primary hover:bg-primary-hover text-primary-foreground">
+                <a href={gmailCompose('Work with Daniyal')} target="_blank" rel="noopener noreferrer">
+                  <Mail className="w-3.5 h-3.5 mr-1.5" />
+                  Work with me
                 </a>
               </Button>
             </div>
 
-            {/* Mobile menu button */}
+            {/* Mobile toggle */}
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden text-foreground hover:text-primary"
+              className="md:hidden text-foreground"
+              aria-label="Toggle menu"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </Button>
           </div>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
-      <div className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${isMobileMenuOpen ? 'visible' : 'invisible'
-        }`}>
-        {/* Backdrop */}
+      {/* Mobile menu */}
+      <div className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${isMobileMenuOpen ? 'visible' : 'invisible'}`}>
         <div
-          className={`absolute inset-0 bg-background/80 backdrop-blur-sm transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0'
-            }`}
+          className={`absolute inset-0 bg-foreground/20 backdrop-blur-sm transition-opacity duration-300 ${
+            isMobileMenuOpen ? 'opacity-100' : 'opacity-0'
+          }`}
           onClick={() => setIsMobileMenuOpen(false)}
         />
-
-        {/* Menu Panel */}
-        <div className={`absolute top-16 right-0 w-64 bg-card border-l border-border shadow-lg transition-transform duration-300 h-[calc(100vh-4rem)] ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-          }`}>
-          <div className="p-6 space-y-4">
-            {navItems.map((item) => (
+        <div
+          className={`absolute top-16 right-0 w-64 bg-card border-l border-border shadow-lg transition-transform duration-300 h-[calc(100vh-4rem)] ${
+            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <div className="p-6 space-y-2">
+            {NAV_ITEMS.map((item) => (
               <Button
-                key={item.id}
+                key={item.to}
                 variant="ghost"
-                onClick={() => scrollToSection(item.id)}
-                className="w-full justify-start text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all duration-300"
+                asChild
+                className="w-full justify-start text-muted-foreground hover:text-foreground"
               >
-                {item.label}
+                <Link to={item.to} onClick={() => setIsMobileMenuOpen(false)}>
+                  {item.label}
+                </Link>
               </Button>
             ))}
-            <hr className="border-border/50" />
-            <Button
-              asChild
-              className="w-full bg-primary hover:bg-primary-hover text-primary-foreground"
-            >
-              <a
-                href="https://drive.google.com/file/d/1mF4fqygtJM7HVC3soUSDT2DDjkwD6Oyg/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                Download CV
+            <hr className="border-border" />
+            <Button asChild className="w-full bg-primary hover:bg-primary-hover text-primary-foreground">
+              <a href={gmailCompose('Work with Daniyal')} target="_blank" rel="noopener noreferrer">
+                <Mail className="w-4 h-4 mr-2" />
+                Work with me
               </a>
             </Button>
           </div>

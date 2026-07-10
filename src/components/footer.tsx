@@ -1,99 +1,108 @@
-import { Linkedin, Github, Mail, Heart, Code2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
+import { Linkedin, Github, Mail } from 'lucide-react';
+import { gmailCompose } from '@/lib/contact';
+import { SERVICES } from '@/data/services';
+
+const EXPLORE_LINKS = [
+  { to: '/work', label: 'Work & case studies' },
+  { to: '/testimonials', label: 'Testimonials & results' },
+  { to: '/blog', label: 'Blog' },
+  { to: '/#about', label: 'About' },
+  { to: '/#contact', label: 'Contact' },
+];
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
-    <footer className="py-12 bg-card border-t border-border/50">
+    <footer className="py-14 bg-term-bg border-t border-term-border">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 items-center">
-            {/* Logo & Tagline */}
-            <div className="text-center md:text-left">
-              <button
-                onClick={scrollToTop}
-                className="inline-flex items-center gap-2 group"
-              >
-                <span className="text-xl font-bold font-heading text-foreground group-hover:text-primary transition-colors">
-                  Daniyal
-                </span>
-                <span className="text-xl font-bold font-heading gradient-text">
-                  Aziz
-                </span>
-              </button>
-              <p className="text-sm text-muted-foreground mt-2">
-                Agentic AI Engineer & Automation Architect
+          <div className="grid md:grid-cols-4 gap-10">
+            {/* Brand */}
+            <div className="md:col-span-2 space-y-4">
+              <Link to="/" className="inline-block">
+                <p className="font-mono text-sm font-semibold text-term-text">daniyal.aziz</p>
+              </Link>
+              <p className="text-sm text-term-dim leading-relaxed max-w-sm">
+                AI automation expert and GTM engineer at{' '}
+                <a
+                  href="https://www.recruitergtm.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-term-text hover:text-term-green transition-colors"
+                >
+                  RecruiterGTM
+                </a>
+                . Claude agents, outbound systems, and ops integrations that do real revenue work.
               </p>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex justify-center gap-4">
-              <Button
-                variant="ghost"
-                size="icon"
-                asChild
-                className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
-              >
+              <div className="flex items-center gap-4">
                 <a
                   href="https://www.linkedin.com/in/daniyal-aziz-643309246/"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
+                  className="text-term-dim hover:text-term-green transition-colors"
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                asChild
-                className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
-              >
                 <a
                   href="https://github.com/Daniyal1234-alt"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
+                  className="text-term-dim hover:text-term-green transition-colors"
                 >
                   <Github className="w-5 h-5" />
                 </a>
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                asChild
-                className="text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300"
-              >
                 <a
-                  href="mailto:daniyalaziz184@gmail.com"
+                  href={gmailCompose()}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label="Email"
+                  className="text-term-dim hover:text-term-green transition-colors"
                 >
                   <Mail className="w-5 h-5" />
                 </a>
-              </Button>
+              </div>
             </div>
 
-            {/* Copyright */}
-            <div className="text-center md:text-right">
-              <p className="text-sm text-muted-foreground">
-                © {currentYear} Muhammad Daniyal Aziz
-              </p>
-              <p className="text-xs text-muted-foreground/70 mt-1 flex items-center justify-center md:justify-end gap-1">
-                Built with <Heart className="w-3 h-3 text-red-500" /> using
-                <Code2 className="w-3 h-3 text-primary ml-1" /> React & TypeScript
-              </p>
+            {/* Services */}
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-term-dim mb-4">Services</p>
+              <ul className="space-y-2.5">
+                {SERVICES.map((service) => (
+                  <li key={service.slug}>
+                    <Link
+                      to={`/${service.slug}`}
+                      className="text-sm text-term-text hover:text-term-green transition-colors"
+                    >
+                      {service.navLabel}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Explore */}
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-wider text-term-dim mb-4">Explore</p>
+              <ul className="space-y-2.5">
+                {EXPLORE_LINKS.map((link) => (
+                  <li key={link.to}>
+                    <Link to={link.to} className="text-sm text-term-text hover:text-term-green transition-colors">
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
-          {/* Bottom border decoration */}
-          <div className="mt-8 pt-8 border-t border-border/30">
-            <p className="text-center text-xs text-muted-foreground/50">
-              "Automating the future, one workflow at a time"
+          <div className="mt-10 pt-6 border-t border-term-border flex flex-col md:flex-row items-center justify-between gap-3">
+            <p className="font-mono text-xs text-term-dim">© {currentYear} Muhammad Daniyal Aziz</p>
+            <p className="text-xs text-term-dim">
+              Islamabad, Pakistan · working worldwide
             </p>
           </div>
         </div>

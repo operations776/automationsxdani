@@ -1,20 +1,21 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig({
   server: {
     host: "::",
-    port: 8080,
+    // 8080 belongs to Jenkins on this machine; keep the portfolio on its own port
+    port: 4242,
+    strictPort: true,
   },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // 👇 IMPORTANT for GitHub Pages
-  base: "/daniyal-aziz-protfolio/",
-}));
+  // Vercel serves from the domain root
+  base: "/",
+});

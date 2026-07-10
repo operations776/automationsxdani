@@ -1,152 +1,87 @@
-import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ChevronDown, Download, Mail, ArrowRight } from 'lucide-react';
-import NeuralNetworkBg from './neural-network-bg';
+import { ArrowRight, Mail } from 'lucide-react';
+import HeroVisual from './hero-visual';
+import ToolLogo from './tool-logo';
+import { gmailCompose } from '@/lib/contact';
 
-const roles = [
-  "Agentic AI Engineer",
-  "Automation Architect",
-  "LLM Integration Specialist",
-  "Workflow Orchestration Expert"
+const stats = [
+  { value: '20+', label: 'Claude agent workspaces shipped' },
+  { value: '10+', label: 'ATS & CRM platforms integrated' },
+  { value: '50+', label: 'Production automations in the wild' },
 ];
 
 const HeroSection = () => {
-  const [currentRole, setCurrentRole] = useState(0);
-  const [displayText, setDisplayText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const role = roles[currentRole];
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        if (displayText.length < role.length) {
-          setDisplayText(role.slice(0, displayText.length + 1));
-        } else {
-          setTimeout(() => setIsDeleting(true), 2000);
-        }
-      } else {
-        if (displayText.length > 0) {
-          setDisplayText(displayText.slice(0, -1));
-        } else {
-          setIsDeleting(false);
-          setCurrentRole((prev) => (prev + 1) % roles.length);
-        }
-      }
-    }, isDeleting ? 50 : 100);
-
-    return () => clearTimeout(timeout);
-  }, [displayText, isDeleting, currentRole]);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
-      <NeuralNetworkBg />
+    <section id="home" className="relative overflow-hidden bg-dot-grid">
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
 
-      {/* Grid Overlay */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-30" />
-
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
-
-      <div className="container relative z-10 mx-auto px-6 py-20">
-        <div className="max-w-5xl mx-auto text-center">
+      <div className="container relative z-10 mx-auto px-6 pt-32 pb-20 md:pt-40 md:pb-28">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-6xl mx-auto">
+          {/* Left: the pitch */}
           <div className="space-y-8 animate-fade-up">
-            {/* Availability Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-primary animate-status-pulse" />
-              <span className="text-sm text-primary font-medium">Available for Projects</span>
+            <a
+              href="https://www.recruitergtm.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-card text-sm text-muted-foreground hover:border-primary hover:text-primary transition-colors"
+            >
+              <ToolLogo src="recruitergtm.png" name="RecruiterGTM" size={16} />
+              Building at RecruiterGTM
+              <span className="w-2 h-2 rounded-full bg-success animate-status-pulse" />
+            </a>
+
+            <div className="space-y-5">
+              <p className="text-sm font-medium tracking-widest uppercase text-muted-foreground">
+                Muhammad Daniyal Aziz
+              </p>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-heading leading-[1.05] tracking-tight text-foreground">
+                I build Claude-powered GTM systems that do real revenue work.
+              </h1>
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+                GTM Engineer and AI Automation Specialist at RecruiterGTM. If your business
+                runs on manual ops, I turn them into agent-run infrastructure: AI ops
+                managers, outbound engines, onboarding automations, and the operations layer
+                that keeps it all running.
+              </p>
             </div>
 
-            {/* Name */}
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-heading leading-tight">
-              <span className="text-foreground">Muhammad</span>
-              <br />
-              <span className="gradient-text text-glow">Daniyal Aziz</span>
-            </h1>
-
-            {/* Typing Animation */}
-            <div className="h-12 md:h-16 flex items-center justify-center">
-              <span className="text-2xl md:text-4xl font-semibold text-primary">
-                {displayText}
-                <span className="animate-blink text-primary">|</span>
-              </span>
-            </div>
-
-            {/* Tagline */}
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Building intelligent automation systems that transform business operations
-              through cutting-edge AI and workflow orchestration.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
+            <div className="flex flex-col sm:flex-row gap-3">
               <Button
-                size="lg"
-                onClick={() => scrollToSection('projects')}
-                className="group bg-primary hover:bg-primary-hover text-primary-foreground px-8 py-6 text-lg font-semibold transition-all duration-300 hover:shadow-glow"
-              >
-                View My Projects
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
-
-              <Button
-                variant="outline"
                 size="lg"
                 asChild
-                className="border-primary/50 hover:bg-primary/10 hover:border-primary px-8 py-6 text-lg transition-all duration-300 group"
+                className="group bg-primary hover:bg-primary-hover text-primary-foreground px-7 font-semibold"
               >
-                <a
-                  href="https://drive.google.com/file/d/1mF4fqygtJM7HVC3soUSDT2DDjkwD6Oyg/view?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Download className="mr-2 w-5 h-5 group-hover:animate-bounce" />
-                  Download CV
-                </a>
+                <Link to="/work">
+                  See the systems
+                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
-
-              <Button
-                variant="ghost"
-                size="lg"
-                onClick={() => scrollToSection('contact')}
-                className="text-muted-foreground hover:text-primary px-8 py-6 text-lg transition-all duration-300"
-              >
-                <Mail className="mr-2 w-5 h-5" />
-                Contact Me
+              <Button variant="outline" size="lg" asChild className="border-border hover:border-primary hover:text-primary px-7">
+                <a href={gmailCompose('Work with Daniyal')} target="_blank" rel="noopener noreferrer">
+                  <Mail className="mr-2 w-4 h-4" />
+                  Work with me
+                </a>
               </Button>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 pt-16 max-w-2xl mx-auto">
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary text-glow-sm">4+</div>
-                <div className="text-sm text-muted-foreground mt-1">Companies</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary text-glow-sm">50+</div>
-                <div className="text-sm text-muted-foreground mt-1">Workflows Built</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-primary text-glow-sm">10+</div>
-                <div className="text-sm text-muted-foreground mt-1">AI Integrations</div>
-              </div>
+            <div className="grid grid-cols-3 gap-6 pt-6 border-t border-border max-w-xl">
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <div className="text-3xl font-bold font-heading text-foreground">{stat.value}</div>
+                  <div className="text-xs text-muted-foreground mt-1 leading-snug">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Scroll indicator */}
-          <button
-            onClick={() => scrollToSection('about')}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer hover:text-primary transition-colors"
-          >
-            <ChevronDown className="w-8 h-8 text-muted-foreground hover:text-primary transition-colors" />
-          </button>
+          {/* Right: the system at work */}
+          <div className="animate-fade-up lg:pl-4" style={{ animationDelay: '120ms' }}>
+            <HeroVisual />
+            <p className="text-xs text-muted-foreground mt-3 text-center">
+              This is what one client's Claude ops manager does on an ordinary morning.
+            </p>
+          </div>
         </div>
       </div>
     </section>
