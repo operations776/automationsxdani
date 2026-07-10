@@ -52,6 +52,33 @@ export const WEBSITE_SCHEMA = {
   publisher: { '@type': 'Person', name: 'Muhammad Daniyal Aziz' },
 };
 
+/* ProfessionalService: helps answer engines classify what Daniyal
+   sells, where, and at what focus, distinct from the Person entity. */
+export const SERVICE_ORG_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Daniyal Aziz, AI Automation & GTM Engineering',
+  url: SITE_URL,
+  image: DEFAULT_IMAGE,
+  description:
+    'Freelance AI automation expert and GTM engineer. Builds Claude AI ops managers, signal-based outbound systems, and ops integrations for businesses worldwide.',
+  founder: { '@type': 'Person', name: 'Muhammad Daniyal Aziz' },
+  areaServed: 'Worldwide',
+  availableLanguage: ['English'],
+  knowsAbout: [
+    'AI automation',
+    'GTM engineering',
+    'Claude AI agents',
+    'Cold email infrastructure',
+    'Clay enrichment',
+    'ATS and CRM integrations',
+  ],
+  sameAs: [
+    'https://www.linkedin.com/in/daniyal-aziz-643309246/',
+    'https://github.com/Daniyal1234-alt',
+  ],
+};
+
 /* Breadcrumb JSON-LD from [name, path] pairs. */
 export const breadcrumbSchema = (items: [string, string][]) => ({
   '@context': 'https://schema.org',
@@ -87,8 +114,10 @@ export const Seo = ({ title, description, path, type = 'website', image = DEFAUL
   const url = `${SITE_URL}${path}`;
   return (
     <Helmet>
+      <html lang="en" />
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       <link rel="canonical" href={url} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
@@ -96,6 +125,7 @@ export const Seo = ({ title, description, path, type = 'website', image = DEFAUL
       <meta property="og:url" content={url} />
       <meta property="og:image" content={image} />
       <meta property="og:site_name" content={SITE_NAME} />
+      <meta property="og:locale" content="en_US" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />

@@ -2,10 +2,11 @@ import Navigation from '@/components/ui/navigation';
 import HeroSection from '@/components/hero-section';
 import HomeTeasers from '@/components/home-teasers';
 import AboutSection from '@/components/about-section';
+import FaqSection, { HOME_FAQS } from '@/components/faq-section';
 import ContactSection from '@/components/contact-section';
 import Footer from '@/components/footer';
 import RoamingPrompt from '@/components/roaming-prompt';
-import { Seo, PERSON_SCHEMA, WEBSITE_SCHEMA } from '@/lib/seo';
+import { Seo, PERSON_SCHEMA, WEBSITE_SCHEMA, SERVICE_ORG_SCHEMA, faqSchema } from '@/lib/seo';
 
 const Index = () => {
   return (
@@ -14,13 +15,14 @@ const Index = () => {
         title="Daniyal Aziz | AI Automation Expert & GTM Engineer"
         description="AI automation expert and GTM engineer at RecruiterGTM. I build Claude automation, outbound systems, and ops integrations that do real revenue work. Watch the live demos, then hire me."
         path="/"
-        jsonLd={[PERSON_SCHEMA, WEBSITE_SCHEMA]}
+        jsonLd={[PERSON_SCHEMA, WEBSITE_SCHEMA, SERVICE_ORG_SCHEMA, faqSchema(HOME_FAQS)]}
       />
       <Navigation />
       <main>
         <HeroSection />
         <HomeTeasers />
         <AboutSection />
+        <FaqSection />
         <ContactSection />
       </main>
       <Footer />
