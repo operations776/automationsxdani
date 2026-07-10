@@ -66,9 +66,6 @@ const AnglePicker = () => {
           <p className="font-semibold text-sm text-foreground">Outbound brain</p>
           <p className="text-xs text-muted-foreground">Pick an ICP, get the angle</p>
         </div>
-        <span className="ml-auto text-[10px] uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full font-semibold">
-          interactive demo
-        </span>
       </div>
 
       <div className="p-5 space-y-4">

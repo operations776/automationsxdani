@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Bot, ShieldCheck, Activity, Lightbulb, Sparkles, Send, Plug, BrainCircuit } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { SERVICES } from '@/data/services';
+import { RESULTS } from '@/data/testimonials';
 
 /* Home page teasers: enough to hook, with the depth living on
    dedicated pages. */
@@ -57,7 +59,7 @@ const HomeTeasers = () => {
               <div className="max-w-xl">
                 <p className="font-mono text-xs uppercase tracking-widest text-primary mb-3">The work</p>
                 <h2 className="text-3xl md:text-4xl font-bold font-heading tracking-tight">
-                  Four systems, all clickable
+                  Four systems doing real work
                 </h2>
               </div>
               <Link
@@ -84,19 +86,41 @@ const HomeTeasers = () => {
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-3">{c.line}</p>
                   <span className="inline-flex items-center gap-1.5 text-sm font-medium text-primary">
-                    Open the live demo
+                    See it in action
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </span>
                 </Link>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
 
-            <p className="text-sm text-muted-foreground mt-8">
-              Prefer receipts?{' '}
-              <Link to="/testimonials" className="text-primary font-medium hover:text-primary-hover">
-                See the results businesses actually got.
+      {/* Results teaser */}
+      <section className="py-24 bg-background border-t border-border">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <div className="max-w-xl mb-10">
+              <p className="font-mono text-xs uppercase tracking-widest text-primary mb-3">Results</p>
+              <h2 className="text-3xl md:text-4xl font-bold font-heading tracking-tight">
+                What businesses actually got
+              </h2>
+            </div>
+            <div className="grid md:grid-cols-3 gap-5 mb-8">
+              {RESULTS.slice(0, 3).map((result) => (
+                <div key={result.headline} className="rounded-xl bg-card border border-border shadow-card p-6">
+                  <p className="text-3xl font-bold font-heading text-primary mb-2">{result.metric}</p>
+                  <h3 className="font-semibold text-foreground text-sm mb-2">{result.headline}</h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{result.detail}</p>
+                </div>
+              ))}
+            </div>
+            <Button variant="outline" asChild className="border-border hover:border-primary hover:text-primary">
+              <Link to="/testimonials">
+                See all results and testimonials
+                <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
-            </p>
+            </Button>
           </div>
         </div>
       </section>

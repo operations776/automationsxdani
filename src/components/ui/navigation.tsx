@@ -5,6 +5,7 @@ import { Menu, X, Mail } from 'lucide-react';
 import { gmailCompose } from '@/lib/contact';
 
 const NAV_ITEMS = [
+  { to: '/', label: 'Home' },
   { to: '/work', label: 'Work' },
   { to: '/testimonials', label: 'Testimonials' },
   { to: '/blog', label: 'Blog' },

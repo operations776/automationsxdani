@@ -240,7 +240,7 @@ const PulseTrackerDemo = () => {
                     : 'Auto-created from the delivery playbook the moment a client is added.'}
               </p>
             </div>
-            <p className="text-[11px] text-muted-foreground">Click the milestones. Clients see this exact view.</p>
+            <p className="text-[11px] text-muted-foreground">Clients see this exact view.</p>
           </div>
         )}
 

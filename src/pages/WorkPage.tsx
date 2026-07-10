@@ -43,8 +43,7 @@ const WorkPage = () => {
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 AI ops managers, outbound infrastructure, and client-facing products, all shipped
-                and running, anonymised where it needs to be. Every demo below is a working
-                miniature: click around, watch it move. Yours would look like this.
+                and running, anonymised where it needs to be. Yours would look like this.
               </p>
             </div>
           </div>

@@ -70,7 +70,7 @@ const ServicePage = ({ service }: { service: ServiceData }) => {
                   </a>
                 </Button>
                 <Button variant="outline" size="lg" asChild className="border-border hover:border-primary hover:text-primary px-7">
-                  <Link to="/#work">
+                  <Link to="/work">
                     See live demos
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Link>
@@ -127,11 +127,11 @@ const ServicePage = ({ service }: { service: ServiceData }) => {
                   ))}
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Every system on the{' '}
-                  <Link to="/#work" className="text-primary font-medium hover:text-primary-hover">
-                    home page
+                  Every demo on the{' '}
+                  <Link to="/work" className="text-primary font-medium hover:text-primary-hover">
+                    work page
                   </Link>{' '}
-                  is a working miniature of something running in production right now. Click around before you email me.
+                  is a working miniature of something running in production right now.
                 </p>
               </div>
               <div>
