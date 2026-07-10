@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hire-daniyal.vercel.app/sitemap.xml
+Sitemap: https://automationsxdani.vercel.app/sitemap.xml

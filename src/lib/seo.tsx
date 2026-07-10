@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 
 /* Single source of truth for site-wide SEO. Change SITE_URL here if
    the deployment name ever changes. */
-export const SITE_URL = 'https://hire-daniyal.vercel.app';
+export const SITE_URL = 'https://automationsxdani.vercel.app';
 export const SITE_NAME = 'Daniyal Aziz';
 export const DEFAULT_IMAGE = `${SITE_URL}/daniyal.jpg`;
 
