@@ -14,6 +14,7 @@ import BlogPost from './pages/BlogPost';
 import NotFound from './pages/NotFound';
 import { ContactDialogProvider } from './components/contact-dialog';
 import LegoGuide from './components/lego-guide';
+import TitleTicker from './components/title-ticker';
 import { SERVICES } from '@/data/services';
 import { POSTS } from '@/data/posts';
 
@@ -45,6 +46,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollManager />
+          <TitleTicker />
           <ContactDialogProvider>
             <Routes>
               <Route path="/" element={<Index />} />
