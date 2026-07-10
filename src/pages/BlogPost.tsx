@@ -5,10 +5,11 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, ChevronRight, Mail } from 'lucide-react';
 import { Post } from '@/data/posts';
 import { Seo, PERSON_SCHEMA, breadcrumbSchema, DEFAULT_IMAGE, SITE_URL } from '@/lib/seo';
-import { gmailCompose } from '@/lib/contact';
+import { useContactDialog } from '@/components/contact-dialog';
 import { asset } from '@/lib/asset';
 
 const BlogPost = ({ post }: { post: Post }) => {
+  const { open: openContact } = useContactDialog();
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -133,11 +134,9 @@ const BlogPost = ({ post }: { post: Post }) => {
               <p className="text-lg font-semibold text-white font-heading">
                 Want systems like this in your business?
               </p>
-              <Button size="lg" asChild className="bg-term-green text-term-bg hover:bg-term-green/85 font-semibold px-8">
-                <a href={gmailCompose('Project inquiry')} target="_blank" rel="noopener noreferrer">
-                  <Mail className="mr-2 w-4 h-4" />
-                  Work with me
-                </a>
+              <Button size="lg" onClick={() => openContact(`blog-${post.slug}`)} className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-8">
+                <Mail className="mr-2 w-4 h-4" />
+                Work with me
               </Button>
             </div>
           </div>

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Mail } from 'lucide-react';
-import { gmailCompose } from '@/lib/contact';
+import { useContactDialog } from '@/components/contact-dialog';
 
 const NAV_ITEMS = [
   { to: '/', label: 'Home' },
@@ -16,6 +16,7 @@ const NAV_ITEMS = [
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { open: openContact } = useContactDialog();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 24);
@@ -61,11 +62,9 @@ const Navigation = () => {
                   <Link to={item.to}>{item.label}</Link>
                 </Button>
               ))}
-              <Button size="sm" asChild className="ml-3 bg-primary hover:bg-primary-hover text-primary-foreground">
-                <a href={gmailCompose('Work with Daniyal')} target="_blank" rel="noopener noreferrer">
-                  <Mail className="w-3.5 h-3.5 mr-1.5" />
-                  Work with me
-                </a>
+              <Button size="sm" onClick={() => openContact('nav')} className="ml-3 bg-primary hover:bg-primary-hover text-primary-foreground">
+                <Mail className="w-3.5 h-3.5 mr-1.5" />
+                Work with me
               </Button>
             </div>
 
@@ -110,11 +109,15 @@ const Navigation = () => {
               </Button>
             ))}
             <hr className="border-border" />
-            <Button asChild className="w-full bg-primary hover:bg-primary-hover text-primary-foreground">
-              <a href={gmailCompose('Work with Daniyal')} target="_blank" rel="noopener noreferrer">
-                <Mail className="w-4 h-4 mr-2" />
-                Work with me
-              </a>
+            <Button
+              onClick={() => {
+                setIsMobileMenuOpen(false);
+                openContact('nav-mobile');
+              }}
+              className="w-full bg-primary hover:bg-primary-hover text-primary-foreground"
+            >
+              <Mail className="w-4 h-4 mr-2" />
+              Work with me
             </Button>
           </div>
         </div>

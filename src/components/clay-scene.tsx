@@ -1,21 +1,34 @@
 import { ClayFunnel, ClayPencil, ClayMagnifier, ClayChart, ClaySwirl, ClayMailbox } from './clay-objects';
 
 /* A soft clay landscape of floating molded objects, echoing Clay's
-   hero. Objects idle-float on their own offsets so the scene breathes. */
+   hero. The hill blends into the page (no hard rectangle edge) and
+   objects idle-float on their own offsets so the scene breathes. */
 
 const ClayScene = () => {
   return (
-    <div className="relative w-full h-full min-h-[300px]" aria-hidden="true">
-      {/* Rolling hill */}
-      <svg viewBox="0 0 600 360" preserveAspectRatio="xMidYMax slice" className="absolute inset-0 w-full h-full">
+    <div className="relative w-full h-full min-h-[340px]" aria-hidden="true">
+      {/* Rolling hill, fading out at the sides and bottom so it melts
+          into the page rather than ending in a box */}
+      <svg viewBox="0 0 600 380" preserveAspectRatio="xMidYMax meet" className="absolute inset-0 w-full h-full">
         <defs>
           <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#7bcf8f" />
-            <stop offset="100%" stopColor="#4faf6e" />
+            <stop offset="100%" stopColor="#57ba76" />
           </linearGradient>
+          {/* soft edge mask: transparent at the sides and bottom */}
+          <radialGradient id="hillFade" cx="50%" cy="38%" r="62%">
+            <stop offset="0%" stopColor="#fff" stopOpacity="1" />
+            <stop offset="72%" stopColor="#fff" stopOpacity="1" />
+            <stop offset="100%" stopColor="#fff" stopOpacity="0" />
+          </radialGradient>
+          <mask id="hillMask">
+            <rect width="600" height="380" fill="url(#hillFade)" />
+          </mask>
         </defs>
-        <path d="M0 250 C150 210 260 300 380 258 C480 224 560 262 600 250 V360 H0 Z" fill="url(#hill)" />
-        <ellipse cx="300" cy="352" rx="60" ry="10" fill="#2f8f5a" opacity="0.4" />
+        <g mask="url(#hillMask)">
+          <path d="M0 250 C150 210 260 300 380 258 C480 224 560 262 600 250 V380 H0 Z" fill="url(#hill)" />
+          <ellipse cx="300" cy="366" rx="70" ry="12" fill="#2f8f5a" opacity="0.28" />
+        </g>
       </svg>
 
       {/* Floating objects */}

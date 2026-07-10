@@ -12,6 +12,8 @@ import ServicePage from './pages/ServicePage';
 import BlogIndex from './pages/BlogIndex';
 import BlogPost from './pages/BlogPost';
 import NotFound from './pages/NotFound';
+import { ContactDialogProvider } from './components/contact-dialog';
+import LegoGuide from './components/lego-guide';
 import { SERVICES } from '@/data/services';
 import { POSTS } from '@/data/posts';
 
@@ -43,19 +45,22 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <ScrollManager />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/work" element={<WorkPage />} />
-            <Route path="/testimonials" element={<TestimonialsPage />} />
-            {SERVICES.map((service) => (
-              <Route key={service.slug} path={`/${service.slug}`} element={<ServicePage service={service} />} />
-            ))}
-            <Route path="/blog" element={<BlogIndex />} />
-            {POSTS.map((post) => (
-              <Route key={post.slug} path={`/blog/${post.slug}`} element={<BlogPost post={post} />} />
-            ))}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <ContactDialogProvider>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/work" element={<WorkPage />} />
+              <Route path="/testimonials" element={<TestimonialsPage />} />
+              {SERVICES.map((service) => (
+                <Route key={service.slug} path={`/${service.slug}`} element={<ServicePage service={service} />} />
+              ))}
+              <Route path="/blog" element={<BlogIndex />} />
+              {POSTS.map((post) => (
+                <Route key={post.slug} path={`/blog/${post.slug}`} element={<BlogPost post={post} />} />
+              ))}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <LegoGuide />
+          </ContactDialogProvider>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

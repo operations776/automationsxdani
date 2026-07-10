@@ -8,9 +8,10 @@ import ArchiveSection from '@/components/archive-section';
 import { Button } from '@/components/ui/button';
 import { Mail, ChevronRight } from 'lucide-react';
 import { Seo, PERSON_SCHEMA, breadcrumbSchema } from '@/lib/seo';
-import { gmailCompose } from '@/lib/contact';
+import { useContactDialog } from '@/components/contact-dialog';
 
 const WorkPage = () => {
+  const { open: openContact } = useContactDialog();
   return (
     <div className="min-h-screen bg-background">
       <Seo
@@ -60,11 +61,9 @@ const WorkPage = () => {
             <h2 className="text-2xl md:text-4xl font-bold font-heading tracking-tight text-white">
               Want one of these running in your business?
             </h2>
-            <Button size="lg" asChild className="bg-term-green text-term-bg hover:bg-term-green/85 font-semibold px-8">
-              <a href={gmailCompose('Project inquiry')} target="_blank" rel="noopener noreferrer">
-                <Mail className="mr-2 w-4 h-4" />
-                Work with me
-              </a>
+            <Button size="lg" onClick={() => openContact('work-page')} className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-8">
+              <Mail className="mr-2 w-4 h-4" />
+              Work with me
             </Button>
           </div>
         </section>

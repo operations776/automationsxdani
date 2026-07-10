@@ -4,7 +4,7 @@ import { ArrowRight, Mail } from 'lucide-react';
 import HeroVisual from './hero-visual';
 import ClayScene from './clay-scene';
 import ToolLogo from './tool-logo';
-import { gmailCompose } from '@/lib/contact';
+import { useContactDialog } from './contact-dialog';
 
 const stats = [
   { value: '20+', label: 'Claude agent workspaces shipped' },
@@ -13,8 +13,12 @@ const stats = [
 ];
 
 const HeroSection = () => {
+  const { open: openContact } = useContactDialog();
   return (
     <section id="home" className="relative overflow-hidden bg-clay-sky">
+      {/* soft fade into the next section so the hero doesn't end abruptly */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background" />
+
       <div className="container relative z-10 mx-auto px-6 pt-28 pb-16 md:pt-36">
         {/* Top: pitch over the clay landscape */}
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center max-w-6xl mx-auto">
@@ -60,13 +64,11 @@ const HeroSection = () => {
               <Button
                 variant="outline"
                 size="lg"
-                asChild
+                onClick={() => openContact('hero')}
                 className="border-2 border-border bg-card hover:border-primary hover:text-primary px-7 font-bold text-base clay-lift clay-press"
               >
-                <a href={gmailCompose('Work with Daniyal')} target="_blank" rel="noopener noreferrer">
-                  <Mail className="mr-2 w-4 h-4" />
-                  Work with me
-                </a>
+                <Mail className="mr-2 w-4 h-4" />
+                Work with me
               </Button>
             </div>
 

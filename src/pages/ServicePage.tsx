@@ -6,7 +6,7 @@ import { Mail, ArrowRight, ChevronRight, AlertCircle } from 'lucide-react';
 import { ServiceData, SERVICES } from '@/data/services';
 import { POSTS } from '@/data/posts';
 import { Seo, PERSON_SCHEMA, breadcrumbSchema, faqSchema, SITE_URL } from '@/lib/seo';
-import { gmailCompose } from '@/lib/contact';
+import { useContactDialog } from '@/components/contact-dialog';
 
 const stats = [
   { value: '20+', label: 'Claude agent workspaces shipped' },
@@ -17,6 +17,7 @@ const stats = [
 const ServicePage = ({ service }: { service: ServiceData }) => {
   const related = SERVICES.filter((s) => service.relatedSlugs.includes(s.slug));
   const posts = POSTS.filter((p) => service.blogSlugs.includes(p.slug));
+  const { open: openContact } = useContactDialog();
 
   const serviceSchema = {
     '@context': 'https://schema.org',
@@ -63,11 +64,9 @@ const ServicePage = ({ service }: { service: ServiceData }) => {
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">{service.sub}</p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button size="lg" asChild className="bg-primary hover:bg-primary-hover text-primary-foreground px-7 font-semibold">
-                  <a href={gmailCompose(`${service.navLabel}: project inquiry`)} target="_blank" rel="noopener noreferrer">
-                    <Mail className="mr-2 w-4 h-4" />
-                    Work with me
-                  </a>
+                <Button size="lg" onClick={() => openContact(service.slug)} className="bg-primary hover:bg-primary-hover text-primary-foreground px-7 font-semibold">
+                  <Mail className="mr-2 w-4 h-4" />
+                  Work with me
                 </Button>
                 <Button variant="outline" size="lg" asChild className="border-border hover:border-primary hover:text-primary px-7">
                   <Link to="/work">
@@ -211,11 +210,9 @@ const ServicePage = ({ service }: { service: ServiceData }) => {
             <h2 className="text-2xl md:text-4xl font-bold font-heading tracking-tight text-white">
               Tell me what's still manual in your business.
             </h2>
-            <Button size="lg" asChild className="bg-term-green text-term-bg hover:bg-term-green/85 font-semibold px-8">
-              <a href={gmailCompose(`${service.navLabel}: project inquiry`)} target="_blank" rel="noopener noreferrer">
-                <Mail className="mr-2 w-4 h-4" />
-                Start the conversation
-              </a>
+            <Button size="lg" onClick={() => openContact(service.slug)} className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-8">
+              <Mail className="mr-2 w-4 h-4" />
+              Start the conversation
             </Button>
           </div>
         </section>

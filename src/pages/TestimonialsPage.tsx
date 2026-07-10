@@ -5,9 +5,10 @@ import { Button } from '@/components/ui/button';
 import { Mail, ChevronRight, Quote, ArrowRight, Users } from 'lucide-react';
 import { TESTIMONIALS, RESULTS } from '@/data/testimonials';
 import { Seo, PERSON_SCHEMA, breadcrumbSchema } from '@/lib/seo';
-import { gmailCompose } from '@/lib/contact';
+import { useContactDialog } from '@/components/contact-dialog';
 
 const TestimonialsPage = () => {
+  const { open: openContact } = useContactDialog();
   return (
     <div className="min-h-screen bg-background">
       <Seo
@@ -108,11 +109,9 @@ const TestimonialsPage = () => {
               Want a result like these on this page?
             </h2>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button size="lg" asChild className="bg-term-green text-term-bg hover:bg-term-green/85 font-semibold px-8">
-                <a href={gmailCompose('Project inquiry')} target="_blank" rel="noopener noreferrer">
-                  <Mail className="mr-2 w-4 h-4" />
-                  Work with me
-                </a>
+              <Button size="lg" onClick={() => openContact('testimonials')} className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-8">
+                <Mail className="mr-2 w-4 h-4" />
+                Work with me
               </Button>
               <Button size="lg" variant="outline" asChild className="border-term-border bg-transparent text-term-text hover:bg-term-surface hover:text-white px-8">
                 <Link to="/work">
