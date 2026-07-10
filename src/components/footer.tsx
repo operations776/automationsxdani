@@ -21,8 +21,9 @@ const Footer = () => {
           <div className="grid md:grid-cols-4 gap-10">
             {/* Brand */}
             <div className="md:col-span-2 space-y-4">
-              <Link to="/" className="inline-block">
-                <p className="font-mono text-sm font-semibold text-term-text">daniyal.aziz</p>
+              <Link to="/" className="inline-flex items-center gap-2 group">
+                <span className="w-3.5 h-3.5 rounded-full bg-primary group-hover:scale-110 transition-transform" />
+                <p className="font-heading text-lg font-extrabold text-term-text">Daniyal</p>
               </Link>
               <p className="text-sm text-term-dim leading-relaxed max-w-sm">
                 AI automation expert and GTM engineer at{' '}

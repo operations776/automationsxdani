@@ -2,81 +2,94 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design system: editorial paper base with dark terminal islands.
-   Light, typographic, zero glow. All colors HSL. */
+/* Design system: claymation. Warm cream base, soft molded surfaces,
+   puffy shadows, chunky rounded forms, candy accents, bouncy motion.
+   Variable names kept stable so components need no churn. */
 
 @layer base {
   :root {
-    /* Paper + ink */
-    --background: 40 25% 97%;            /* warm paper */
-    --foreground: 222 20% 12%;           /* ink */
+    /* Warm cream base + soft ink */
+    --background: 40 44% 94%;            /* warm cream */
+    --foreground: 240 24% 18%;          /* soft indigo-ink */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222 20% 12%;
-    --card-hover: 40 20% 94%;
+    --card: 40 50% 98%;
+    --card-foreground: 240 24% 18%;
+    --card-hover: 40 44% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 20% 12%;
+    --popover: 40 50% 98%;
+    --popover-foreground: 240 24% 18%;
 
-    /* Cobalt accent */
-    --primary: 223 65% 42%;
-    --primary-foreground: 0 0% 100%;
-    --primary-hover: 223 65% 34%;
+    /* Coral candy accent */
+    --primary: 8 82% 63%;
+    --primary-foreground: 40 50% 99%;
+    --primary-hover: 8 78% 56%;
 
-    --secondary: 40 15% 92%;
-    --secondary-foreground: 222 20% 12%;
+    --secondary: 40 40% 90%;
+    --secondary-foreground: 240 24% 18%;
 
-    --muted: 40 15% 92%;
-    --muted-foreground: 222 10% 42%;
+    --muted: 40 34% 90%;
+    --muted-foreground: 240 10% 44%;
 
-    --accent: 223 65% 42%;
-    --accent-foreground: 0 0% 100%;
-    --accent-hover: 223 65% 34%;
+    /* Sky-blue secondary accent (Clay's swirl blue) */
+    --accent: 199 78% 60%;
+    --accent-foreground: 240 24% 18%;
+    --accent-hover: 199 74% 52%;
 
-    --success: 152 55% 34%;
+    --success: 150 52% 46%;
 
-    --destructive: 0 72% 48%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 4 78% 60%;
+    --destructive-foreground: 40 50% 99%;
 
-    --border: 40 12% 86%;
-    --input: 40 12% 86%;
-    --ring: 223 65% 42%;
+    --border: 38 28% 84%;
+    --input: 38 28% 84%;
+    --ring: 8 82% 63%;
 
-    --radius: 0.5rem;
+    /* Chunky, clay-like corners */
+    --radius: 1.5rem;
 
-    /* Terminal island palette */
-    --term-bg: 222 26% 9%;
-    --term-surface: 222 24% 13%;
-    --term-border: 220 14% 24%;
-    --term-text: 210 18% 87%;
-    --term-dim: 215 10% 56%;
-    --term-green: 150 55% 55%;
-    --term-amber: 40 90% 60%;
-    --term-red: 0 70% 64%;
-    --term-blue: 212 85% 70%;
+    /* Playful accent hues for object scenes and category chips */
+    --clay-coral: 8 82% 63%;
+    --clay-sky: 199 78% 60%;
+    --clay-mint: 150 52% 60%;
+    --clay-butter: 40 90% 68%;
+    --clay-grape: 258 60% 66%;
+    --clay-tangerine: 26 92% 62%;
 
-    /* Neutral shadows, no glow */
-    --shadow-sm: 0 1px 2px hsl(222 20% 12% / 0.06);
-    --shadow-md: 0 2px 8px hsl(222 20% 12% / 0.08);
-    --shadow-lg: 0 12px 32px -8px hsl(222 20% 12% / 0.14);
-    --shadow-card: 0 1px 3px hsl(222 20% 12% / 0.07), 0 8px 24px -12px hsl(222 20% 12% / 0.12);
-    --shadow-island: 0 16px 40px -12px hsl(222 30% 10% / 0.35);
+    /* "Terminal" island tokens repurposed as a deep clay slab, so the
+       dark sections read as molded night-clay, not a code console. */
+    --term-bg: 244 40% 22%;
+    --term-surface: 244 34% 28%;
+    --term-border: 244 26% 38%;
+    --term-text: 40 44% 94%;
+    --term-dim: 244 16% 68%;
+    --term-green: 150 56% 62%;
+    --term-amber: 40 92% 70%;
+    --term-red: 8 82% 68%;
+    --term-blue: 199 78% 68%;
 
-    --font-heading: 'Space Grotesk', 'Inter', system-ui, sans-serif;
-    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    /* Puffy clay shadows: soft, wide, low-contrast, with a hint of warmth */
+    --shadow-sm: 0 2px 4px hsl(30 30% 40% / 0.10);
+    --shadow-md: 0 6px 16px -4px hsl(30 30% 35% / 0.16);
+    --shadow-lg: 0 18px 40px -10px hsl(30 30% 30% / 0.22);
+    --shadow-card: 0 10px 30px -8px hsl(30 30% 35% / 0.18), 0 2px 6px hsl(30 30% 40% / 0.08);
+    --shadow-island: 0 24px 60px -16px hsl(244 40% 18% / 0.42);
+
+    --font-heading: 'Baloo 2', 'Space Grotesk', system-ui, sans-serif;
+    --font-body: 'Nunito', 'Inter', system-ui, -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', 'Consolas', monospace;
 
     --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
     /* Sidebar vars kept for shadcn components */
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 222 20% 12%;
-    --sidebar-primary: 223 65% 42%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 40 15% 92%;
-    --sidebar-accent-foreground: 222 20% 12%;
-    --sidebar-border: 40 12% 86%;
-    --sidebar-ring: 223 65% 42%;
+    --sidebar-background: 40 50% 98%;
+    --sidebar-foreground: 240 24% 18%;
+    --sidebar-primary: 8 82% 63%;
+    --sidebar-primary-foreground: 40 50% 99%;
+    --sidebar-accent: 40 40% 90%;
+    --sidebar-accent-foreground: 240 24% 18%;
+    --sidebar-border: 38 28% 84%;
+    --sidebar-ring: 8 82% 63%;
   }
 }
 
@@ -92,28 +105,85 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-body);
+    font-weight: 500;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
   }
 
   ::selection {
-    background: hsl(var(--primary) / 0.18);
+    background: hsl(var(--primary) / 0.22);
   }
 }
 
 @layer utilities {
-  /* Subtle dot grid for the hero, barely there */
+  /* Soft cream dot grid, warmer than before */
   .bg-dot-grid {
-    background-image: radial-gradient(hsl(222 20% 12% / 0.07) 1px, transparent 1px);
-    background-size: 22px 22px;
+    background-image: radial-gradient(hsl(30 30% 55% / 0.12) 2px, transparent 2px);
+    background-size: 26px 26px;
   }
 
-  /* Terminal caret */
-  @keyframes caret-blink {
-    0%, 49% { opacity: 1; }
-    50%, 100% { opacity: 0; }
+  /* Soft warm gradient wash for hero backdrops */
+  .bg-clay-sky {
+    background:
+      radial-gradient(120% 90% at 80% 0%, hsl(199 78% 88% / 0.7), transparent 60%),
+      radial-gradient(90% 80% at 10% 10%, hsl(40 90% 86% / 0.6), transparent 55%);
   }
 
-  .animate-caret {
-    animation: caret-blink 1.1s steps(1) infinite;
+  /* Bouncy entrance: settle in with overshoot */
+  @keyframes clay-pop {
+    0% { opacity: 0; transform: translateY(24px) scale(0.94); }
+    70% { opacity: 1; transform: translateY(-4px) scale(1.01); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .animate-clay-pop {
+    animation: clay-pop 0.6s var(--ease-spring) both;
+  }
+
+  /* Legacy name kept so existing markup keeps animating */
+  .animate-fade-up {
+    animation: clay-pop 0.6s var(--ease-spring) both;
+  }
+
+  /* Gentle idle float for hero objects */
+  @keyframes clay-float {
+    0%, 100% { transform: translateY(0) rotate(var(--tilt, 0deg)); }
+    50% { transform: translateY(-10px) rotate(var(--tilt, 0deg)); }
+  }
+
+  .animate-clay-float {
+    animation: clay-float 5s ease-in-out infinite;
+  }
+
+  /* Squish + lift on hover, the signature clay interaction */
+  .clay-lift {
+    transition: transform 0.32s var(--ease-spring), box-shadow 0.32s var(--ease-spring);
+  }
+
+  .clay-lift:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Legacy hover-lift maps to clay squish so all cards get the feel */
+  .hover-lift {
+    transition: transform 0.32s var(--ease-spring), box-shadow 0.32s var(--ease-spring);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Press-down on click, like squishing clay */
+  .clay-press:active {
+    transform: translateY(1px) scale(0.98);
+  }
+
+  .shadow-island {
+    box-shadow: var(--shadow-island);
   }
 
   /* Marching dashes for active diagram edges */
@@ -126,17 +196,6 @@
     animation: edge-flow 0.6s linear infinite;
   }
 
-  /* Gentle rise-in for sections */
-  @keyframes fade-up {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .animate-fade-up {
-    animation: fade-up 0.5s ease-out both;
-  }
-
-  /* Status dot pulse, used sparingly */
   @keyframes status-pulse {
     0%, 100% { transform: scale(1); opacity: 1; }
     50% { transform: scale(1.25); opacity: 0.6; }
@@ -146,37 +205,28 @@
     animation: status-pulse 2s ease-in-out infinite;
   }
 
-  .hover-lift {
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  .hover-lift:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
-  }
-
-  .shadow-island {
-    box-shadow: var(--shadow-island);
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .animate-caret,
-    .animate-edge-flow,
+    .animate-clay-pop,
     .animate-fade-up,
-    .animate-status-pulse {
+    .animate-clay-float,
+    .animate-edge-flow,
+    .animate-status-pulse,
+    .clay-lift,
+    .hover-lift {
       animation: none;
     }
-
-    html {
-      scroll-behavior: auto;
+    .clay-lift:hover,
+    .hover-lift:hover {
+      transform: none;
     }
+    html { scroll-behavior: auto; }
   }
 }
 
-/* Neutral scrollbars */
+/* Soft rounded scrollbars */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -184,15 +234,14 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(222 10% 70%);
-  border-radius: 4px;
+  background: hsl(30 24% 72%);
+  border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(222 10% 55%);
+  background: hsl(8 60% 70%);
 }
 
-/* Dark scrollbars inside terminal islands */
 .term-scroll::-webkit-scrollbar-thumb {
   background: hsl(var(--term-border));
 }

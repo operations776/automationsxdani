@@ -1,4 +1,4 @@
-import { Play, ExternalLink } from 'lucide-react';
+﻿import { Play, ExternalLink } from 'lucide-react';
 import { asset } from '@/lib/asset';
 
 interface LoomVideo {
@@ -43,7 +43,7 @@ const LoomSection = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="max-w-2xl mb-12">
-            <p className="font-mono text-xs uppercase tracking-widest text-primary mb-3">Recorded walkthroughs</p>
+            <p className="text-xs font-extrabold uppercase tracking-widest text-primary mb-3">Recorded walkthroughs</p>
             <h2 className="text-3xl md:text-4xl font-bold font-heading tracking-tight mb-4">
               Watch a few builds, narrated
             </h2>

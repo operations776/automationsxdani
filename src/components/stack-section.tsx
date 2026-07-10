@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Bot, Send, Plug, Boxes, Wrench, BrainCircuit } from 'lucide-react';
 import ToolLogo from './tool-logo';
 
@@ -103,7 +103,7 @@ const StackSection = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="max-w-2xl mb-12">
-            <p className="font-mono text-xs uppercase tracking-widest text-primary mb-3">The stack</p>
+            <p className="text-xs font-extrabold uppercase tracking-widest text-primary mb-3">The stack</p>
             <h2 className="text-3xl md:text-4xl font-bold font-heading tracking-tight mb-4">
               Five layers, one system
             </h2>

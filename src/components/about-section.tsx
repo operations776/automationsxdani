@@ -1,4 +1,4 @@
-import { Mail, Phone, Linkedin, Github, MapPin } from 'lucide-react';
+﻿import { Mail, Phone, Linkedin, Github, MapPin } from 'lucide-react';
 import { asset } from '@/lib/asset';
 import { gmailCompose, EMAIL } from '@/lib/contact';
 
@@ -8,7 +8,7 @@ const AboutSection = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
           <div className="max-w-2xl mb-14">
-            <p className="font-mono text-xs uppercase tracking-widest text-primary mb-3">The human</p>
+            <p className="text-xs font-extrabold uppercase tracking-widest text-primary mb-3">The human</p>
             <h2 className="text-3xl md:text-4xl font-bold font-heading tracking-tight">About me</h2>
           </div>
 

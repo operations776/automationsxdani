@@ -61,7 +61,16 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // Dark terminal island palette
+        // Claymation accent hues
+        clay: {
+          coral: "hsl(var(--clay-coral))",
+          sky: "hsl(var(--clay-sky))",
+          mint: "hsl(var(--clay-mint))",
+          butter: "hsl(var(--clay-butter))",
+          grape: "hsl(var(--clay-grape))",
+          tangerine: "hsl(var(--clay-tangerine))",
+        },
+        // Deep clay slab palette (was terminal)
         term: {
           bg: "hsl(var(--term-bg))",
           surface: "hsl(var(--term-surface))",
@@ -80,8 +89,8 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        heading: ["Space Grotesk", "Inter", "system-ui", "sans-serif"],
-        body: ["Inter", "system-ui", "-apple-system", "sans-serif"],
+        heading: ["Baloo 2", "Space Grotesk", "system-ui", "sans-serif"],
+        body: ["Nunito", "Inter", "system-ui", "-apple-system", "sans-serif"],
         mono: ["JetBrains Mono", "Consolas", "monospace"],
       },
       boxShadow: {

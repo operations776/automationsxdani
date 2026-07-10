@@ -1,4 +1,4 @@
-import { Badge } from '@/components/ui/badge';
+﻿import { Badge } from '@/components/ui/badge';
 import { Globe, Linkedin, Briefcase } from 'lucide-react';
 import ToolLogo from './tool-logo';
 
@@ -102,7 +102,7 @@ const EngagementsSection = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto">
           <div className="max-w-2xl mb-14">
-            <p className="font-mono text-xs uppercase tracking-widest text-primary mb-3">Engagements</p>
+            <p className="text-xs font-extrabold uppercase tracking-widest text-primary mb-3">Engagements</p>
             <h2 className="text-3xl md:text-4xl font-bold font-heading tracking-tight mb-4">
               What I've built, company by company
             </h2>

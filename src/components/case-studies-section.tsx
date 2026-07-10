@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+﻿import { ReactNode } from 'react';
 import { Badge } from '@/components/ui/badge';
 import DfyFlow from './demos/dfy-flow';
 import ReplySyncDiagram from './demos/reply-sync-diagram';
@@ -83,7 +83,7 @@ const CaseStudiesSection = ({ showHeader = true }: { showHeader?: boolean }) => 
           {/* Section header */}
           {showHeader && (
             <div className="max-w-2xl mb-16">
-              <p className="font-mono text-xs uppercase tracking-widest text-primary mb-3">Case studies</p>
+              <p className="text-xs font-extrabold uppercase tracking-widest text-primary mb-3">Case studies</p>
               <h2 className="text-3xl md:text-4xl font-bold font-heading tracking-tight mb-4">
                 Systems doing real work right now
               </h2>
@@ -106,7 +106,7 @@ const CaseStudiesSection = ({ showHeader = true }: { showHeader?: boolean }) => 
               >
                 {/* Copy */}
                 <div className={`space-y-5 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                  <p className="font-mono text-xs uppercase tracking-widest text-primary">{study.kicker}</p>
+                  <p className="text-xs font-extrabold uppercase tracking-widest text-primary">{study.kicker}</p>
                   <h3 className="text-2xl md:text-3xl font-bold font-heading tracking-tight">{study.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{study.problem}</p>
                   <ul className="space-y-3">

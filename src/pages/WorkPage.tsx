@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import Navigation from '@/components/ui/navigation';
 import Footer from '@/components/footer';
 import CaseStudiesSection from '@/components/case-studies-section';
@@ -37,7 +37,7 @@ const WorkPage = () => {
                 <ChevronRight className="w-3 h-3" />
                 <span className="text-foreground font-medium">Work</span>
               </nav>
-              <p className="font-mono text-xs uppercase tracking-widest text-primary mb-3">Case studies</p>
+              <p className="text-xs font-extrabold uppercase tracking-widest text-primary mb-3">Case studies</p>
               <h1 className="text-3xl md:text-5xl font-bold font-heading tracking-tight mb-4">
                 Systems doing real work right now
               </h1>

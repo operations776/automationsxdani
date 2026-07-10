@@ -42,9 +42,9 @@ const Navigation = () => {
           <div className="flex items-center justify-between h-16">
             {/* Wordmark */}
             <Link to="/" className="flex items-center gap-2 group">
-              <span className="w-2 h-2 rounded-full bg-success" />
-              <span className="font-mono text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
-                daniyal.aziz
+              <span className="w-3.5 h-3.5 rounded-full bg-primary shadow-sm group-hover:scale-110 transition-transform" />
+              <span className="font-heading text-lg font-extrabold text-foreground group-hover:text-primary transition-colors">
+                Daniyal
               </span>
             </Link>
 

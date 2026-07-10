@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
 import Navigation from '@/components/ui/navigation';
 import Footer from '@/components/footer';
 import { Button } from '@/components/ui/button';
@@ -57,7 +57,7 @@ const ServicePage = ({ service }: { service: ServiceData }) => {
                 <ChevronRight className="w-3 h-3" />
                 <span className="text-foreground font-medium">{service.navLabel}</span>
               </nav>
-              <p className="font-mono text-xs uppercase tracking-widest text-primary mb-3">{service.kicker}</p>
+              <p className="text-xs font-extrabold uppercase tracking-widest text-primary mb-3">{service.kicker}</p>
               <h1 className="text-3xl md:text-5xl font-bold font-heading tracking-tight leading-[1.1] mb-5">
                 {service.h1}
               </h1>

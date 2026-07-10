@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -144,7 +144,7 @@ const ArchiveSection = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="max-w-2xl mb-12">
-            <p className="font-mono text-xs uppercase tracking-widest text-primary mb-3">The archive</p>
+            <p className="text-xs font-extrabold uppercase tracking-widest text-primary mb-3">The archive</p>
             <h2 className="text-3xl md:text-4xl font-bold font-heading tracking-tight mb-4">
               Earlier systems, 2024 to early 2026
             </h2>
