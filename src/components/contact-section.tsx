@@ -1,5 +1,4 @@
 import { Linkedin, Github } from 'lucide-react';
-import { ClayMailbox } from './clay-objects';
 import ContactForm from './contact-form';
 
 const ContactSection = () => {
@@ -9,9 +8,6 @@ const ContactSection = () => {
         <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           {/* Pitch */}
           <div className="space-y-6 text-center lg:text-left">
-            <div className="flex justify-center lg:justify-start animate-clay-float">
-              <ClayMailbox size={88} />
-            </div>
             <p className="text-xs uppercase tracking-widest font-bold text-term-green">Contact</p>
             <h2 className="text-3xl md:text-5xl font-extrabold font-heading tracking-tight text-white">
               Want systems like these?

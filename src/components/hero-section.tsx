@@ -4,6 +4,7 @@ import { ArrowRight, Mail } from 'lucide-react';
 import HeroVisual from './hero-visual';
 import ClayScene from './clay-scene';
 import ToolLogo from './tool-logo';
+import RoamingPrompt from './roaming-prompt';
 import { useContactDialog } from './contact-dialog';
 
 const stats = [
@@ -99,6 +100,13 @@ const HeroSection = () => {
           </p>
         </div>
       </div>
+
+      {/* Nudge anchored to the AI ops manager demo */}
+      <RoamingPrompt
+        id="hero-ops-manager"
+        text="Want an AI ops manager like this running in your business?"
+        trigger="inview"
+      />
     </section>
   );
 };

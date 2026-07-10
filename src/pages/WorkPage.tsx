@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Mail, ChevronRight } from 'lucide-react';
 import { Seo, PERSON_SCHEMA, breadcrumbSchema } from '@/lib/seo';
 import { useContactDialog } from '@/components/contact-dialog';
+import RoamingPrompt from '@/components/roaming-prompt';
 
 const WorkPage = () => {
   const { open: openContact } = useContactDialog();
@@ -51,6 +52,12 @@ const WorkPage = () => {
         </section>
 
         <CaseStudiesSection showHeader={false} />
+        {/* After the demos, invite a call */}
+        <RoamingPrompt
+          id="work-after-demos"
+          text="Seen enough? Let's talk about building one of these for your business."
+          trigger="inview"
+        />
         <LoomSection />
         <EngagementsSection />
         <ArchiveSection />

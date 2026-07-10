@@ -1,5 +1,5 @@
 ﻿import { Link } from 'react-router-dom';
-import { ArrowRight, Bot, ShieldCheck, Activity, Lightbulb, Sparkles, Send, Plug, BrainCircuit } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SERVICES } from '@/data/services';
 import { RESULTS } from '@/data/testimonials';
@@ -10,38 +10,25 @@ import { RESULTS } from '@/data/testimonials';
 const CASES = [
   {
     id: 'dfy',
-    icon: <Bot className="w-5 h-5" />,
     title: 'An AI ops manager inside your business',
     line: 'A Claude agent that sources, sells, writes, and reports in your own stack. 20+ shipped.',
   },
   {
     id: 'reply-sync',
-    icon: <ShieldCheck className="w-5 h-5" />,
     title: 'Reply protection across email and LinkedIn',
     line: 'Someone replies on one channel, every other sequence stops in seconds.',
   },
   {
     id: 'pulse-tracker',
-    icon: <Activity className="w-5 h-5" />,
     title: 'Pulse Tracker: the client portal',
     line: 'Campaigns, delivery roadmaps, placements, approvals, and bookings in one login.',
   },
   {
     id: 'outbound-brain',
-    icon: <Lightbulb className="w-5 h-5" />,
     title: 'An outbound brain agents actually use',
     line: 'Swipe file, angle bank, and playbook, so no campaign starts from a blank page.',
   },
 ];
-
-const SERVICE_ICONS: Record<string, { icon: React.ReactNode; tint: string }> = {
-  'ai-automation-expert': { icon: <Sparkles className="w-5 h-5" />, tint: 'bg-clay-coral/20 text-clay-coral' },
-  'gtm-engineer': { icon: <Send className="w-5 h-5" />, tint: 'bg-clay-sky/25 text-accent' },
-  'ops-integrator': { icon: <Plug className="w-5 h-5" />, tint: 'bg-clay-mint/25 text-success' },
-  'claude-automation': { icon: <BrainCircuit className="w-5 h-5" />, tint: 'bg-clay-grape/20 text-clay-grape' },
-};
-
-const CASE_TINTS = ['bg-clay-coral/20 text-clay-coral', 'bg-clay-sky/25 text-accent', 'bg-clay-butter/30 text-clay-tangerine', 'bg-clay-grape/20 text-clay-grape'];
 
 const SERVICE_LINES: Record<string, string> = {
   'ai-automation-expert': 'Automate the busywork with AI that actually ships.',
@@ -74,20 +61,17 @@ const HomeTeasers = () => {
             </div>
 
             <div className="grid md:grid-cols-2 gap-5">
-              {CASES.map((c, i) => (
+              {CASES.map((c) => (
                 <Link
                   key={c.id}
                   to={`/work#${c.id}`}
                   className="group rounded-2xl bg-card shadow-card p-6 hover-lift block"
                 >
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className={`p-2.5 rounded-2xl ${CASE_TINTS[i]}`}>{c.icon}</span>
-                    <h3 className="font-bold text-foreground group-hover:text-primary transition-colors">
-                      {c.title}
-                    </h3>
-                  </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">{c.line}</p>
-                  <span className="inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                  <h3 className="font-bold text-lg text-foreground group-hover:text-primary transition-colors mb-2">
+                    {c.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">{c.line}</p>
+                  <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                     See it in action
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                   </span>
@@ -144,13 +128,14 @@ const HomeTeasers = () => {
                   to={`/${service.slug}`}
                   className="group rounded-2xl bg-card shadow-card p-6 hover-lift block"
                 >
-                  <span className={`inline-flex p-3 rounded-2xl mb-4 ${SERVICE_ICONS[service.slug].tint}`}>
-                    {SERVICE_ICONS[service.slug].icon}
-                  </span>
                   <h3 className="font-bold text-foreground group-hover:text-primary transition-colors mb-2">
                     {service.navLabel}
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{SERVICE_LINES[service.slug]}</p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold text-primary">
+                    Learn more
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  </span>
                 </Link>
               ))}
             </div>

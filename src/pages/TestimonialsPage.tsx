@@ -6,6 +6,7 @@ import { Mail, ChevronRight, Quote, ArrowRight, Users } from 'lucide-react';
 import { TESTIMONIALS, RESULTS } from '@/data/testimonials';
 import { Seo, PERSON_SCHEMA, breadcrumbSchema } from '@/lib/seo';
 import { useContactDialog } from '@/components/contact-dialog';
+import RoamingPrompt from '@/components/roaming-prompt';
 
 const TestimonialsPage = () => {
   const { open: openContact } = useContactDialog();
@@ -123,6 +124,12 @@ const TestimonialsPage = () => {
           </div>
         </section>
       </main>
+
+      <RoamingPrompt
+        id="testimonials-result"
+        text="Want a result like these? Tell me about your business and I'll show you what's realistic."
+        trigger="inview"
+      />
 
       <Footer />
     </div>

@@ -77,6 +77,19 @@ const ContactForm = ({ source = 'website', onSent, variant = 'card' }: ContactFo
         className={`${fieldClass} resize-none`}
       />
 
+      <label className="flex items-start gap-2.5 cursor-pointer select-none py-1">
+        <input
+          type="checkbox"
+          name="newsletter"
+          value="yes"
+          defaultChecked
+          className="mt-0.5 w-4 h-4 rounded border-2 border-border text-primary accent-[hsl(var(--primary))] shrink-0"
+        />
+        <span className="text-xs text-muted-foreground leading-snug">
+          Keep me in the loop with the latest on AI automation and GTM systems. No spam, unsubscribe anytime.
+        </span>
+      </label>
+
       {status === 'error' && (
         <p className="flex items-center gap-2 text-sm text-destructive">
           <AlertCircle className="w-4 h-4 shrink-0" />

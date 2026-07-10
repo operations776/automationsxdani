@@ -32,6 +32,7 @@ export default async function handler(req: any, res: any) {
   const company = String(body.company || '').trim().slice(0, 160);
   const message = String(body.message || '').trim().slice(0, 4000);
   const source = String(body.source || 'website').trim().slice(0, 80);
+  const newsletter = body.newsletter === 'yes' || body.newsletter === true;
   /* honeypot: bots fill hidden fields, humans leave them empty */
   const trap = String(body.website || '').trim();
 
@@ -59,6 +60,7 @@ export default async function handler(req: any, res: any) {
             <tr><td style="padding:6px 0;color:#666;width:90px">Name</td><td style="padding:6px 0"><strong>${safeName}</strong></td></tr>
             <tr><td style="padding:6px 0;color:#666">Email</td><td style="padding:6px 0"><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></td></tr>
             ${safeCompany ? `<tr><td style="padding:6px 0;color:#666">Company</td><td style="padding:6px 0">${safeCompany}</td></tr>` : ''}
+            <tr><td style="padding:6px 0;color:#666">Newsletter</td><td style="padding:6px 0"><strong style="color:${newsletter ? '#2e8b57' : '#999'}">${newsletter ? 'YES, opted in' : 'no'}</strong></td></tr>
             <tr><td style="padding:6px 0;color:#666">Source</td><td style="padding:6px 0">${escapeHtml(source)}</td></tr>
           </table>
           <div style="margin-top:16px;padding:16px;background:#f7f5f0;border-radius:12px;font-size:14px;line-height:1.6">${safeMessage}</div>

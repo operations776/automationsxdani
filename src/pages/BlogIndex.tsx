@@ -43,21 +43,21 @@ const BlogIndex = () => {
         </section>
 
         <section className="container mx-auto px-6">
-          <div className="max-w-3xl space-y-6">
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-5">
             {POSTS.map((post) => (
               <Link
                 key={post.slug}
                 to={`/blog/${post.slug}`}
-                className="group block rounded-xl bg-card border border-border shadow-sm p-6 hover-lift"
+                className="group flex flex-col rounded-2xl bg-card shadow-card p-6 hover-lift"
               >
                 <p className="text-xs text-muted-foreground mb-2">
                   {new Date(post.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })} · {post.readTime}
                 </p>
-                <h2 className="text-xl font-bold font-heading tracking-tight text-foreground group-hover:text-primary transition-colors mb-2">
+                <h2 className="text-lg font-bold font-heading tracking-tight text-foreground group-hover:text-primary transition-colors mb-2">
                   {post.title}
                 </h2>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-3">{post.description}</p>
-                <span className="inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">{post.description}</p>
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                   Read the post
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </span>
