@@ -38,11 +38,12 @@
     href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
 
-  <!-- Favicon: Daniyal's Lego avatar -->
+  <!-- Favicon. Google's favicon crawler wants a real .ico at the root
+       plus a clear rel="icon". Order matters: ICO first. -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-512.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="shortcut icon" href="/favicon.ico">
 
   <!-- Theme color for mobile browsers -->
   <meta name="theme-color" content="#f2e9d8" />
