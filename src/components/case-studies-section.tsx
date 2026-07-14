@@ -5,6 +5,7 @@ import InvoiceFlow from './demos/invoice-flow';
 import LegalIntakeFlow from './demos/legal-intake-flow';
 import PulseTrackerDemo from './demos/pulse-tracker-demo';
 import AnglePicker from './demos/angle-picker';
+import WorkflowProof from './workflow-proof';
 
 interface CaseStudy {
   id: string;
@@ -14,6 +15,8 @@ interface CaseStudy {
   points: string[];
   stack: string[];
   demo: ReactNode;
+  /* The actual build, as a screenshot. Opens full size. */
+  proof?: { image: string; title: string; caption?: string };
 }
 
 const CASE_STUDIES: CaseStudy[] = [
@@ -45,6 +48,12 @@ const CASE_STUDIES: CaseStudy[] = [
     ],
     stack: ['OpenAI', 'Xero API', 'PDF parsing', 'PostgreSQL', 'n8n'],
     demo: <InvoiceFlow />,
+    proof: {
+      image: 'projects/xero-invoices.jpg',
+      title: 'Multi-entity invoice processing, the actual build',
+      caption:
+        'The live workflow: invoice intake, AI extraction, entity matching, GL and tax assignment, and the Xero submission, with the error handling that keeps it running unattended.',
+    },
   },
   {
     id: 'legal-intake',
@@ -60,6 +69,12 @@ const CASE_STUDIES: CaseStudy[] = [
     ],
     stack: ['ManyChat', 'OpenAI', 'Casepeer', 'Instagram API', 'n8n'],
     demo: <LegalIntakeFlow />,
+    proof: {
+      image: 'projects/lead-intake-law.jpg',
+      title: 'Legal intake automation, the actual build',
+      caption:
+        'The live workflow: ManyChat capture across Instagram, TikTok, and Messenger, AI qualification and reply drafting, the evidence collection branch, follow-up sequences, and Casepeer filing.',
+    },
   },
   {
     id: 'pulse-tracker',
@@ -146,7 +161,16 @@ const CaseStudiesSection = ({ showHeader = true }: { showHeader?: boolean }) => 
                 </div>
 
                 {/* Demo */}
-                <div className={index % 2 === 1 ? 'lg:order-1' : ''}>{study.demo}</div>
+                <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
+                  {study.demo}
+                  {study.proof && (
+                    <WorkflowProof
+                      image={study.proof.image}
+                      title={study.proof.title}
+                      caption={study.proof.caption}
+                    />
+                  )}
+                </div>
               </div>
             ))}
           </div>
