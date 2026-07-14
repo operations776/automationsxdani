@@ -124,11 +124,12 @@
     background-size: 26px 26px;
   }
 
-  /* Soft warm gradient wash for hero backdrops */
+  /* Soft warm wash for the hero. Restrained, so the workflow canvas
+     reads as a workspace rather than a cartoon sky. */
   .bg-clay-sky {
     background:
-      radial-gradient(120% 90% at 80% 0%, hsl(199 78% 88% / 0.7), transparent 60%),
-      radial-gradient(90% 80% at 10% 10%, hsl(40 90% 86% / 0.6), transparent 55%);
+      radial-gradient(100% 80% at 85% 0%, hsl(199 60% 92% / 0.5), transparent 60%),
+      radial-gradient(80% 70% at 5% 5%, hsl(40 80% 90% / 0.45), transparent 55%);
   }
 
   /* Bouncy entrance: settle in with overshoot */
