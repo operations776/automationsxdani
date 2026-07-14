@@ -3,6 +3,8 @@
    Answers are written to stand alone in a snippet, first sentence
    carries the point. */
 
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
+
 export const HOME_FAQS = [
   {
     q: 'What does an AI automation expert do?',
@@ -41,14 +43,22 @@ const FaqSection = () => {
               Questions people ask
             </h2>
           </div>
-          <div className="space-y-6">
+          <Accordion type="single" collapsible className="space-y-4">
             {HOME_FAQS.map((faq) => (
-              <div key={faq.q} className="rounded-2xl bg-card shadow-card p-6">
-                <h3 className="font-bold text-foreground mb-2">{faq.q}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
-              </div>
+              <AccordionItem
+                key={faq.q}
+                value={faq.q}
+                className="rounded-2xl bg-card shadow-card border-0 px-6 overflow-hidden"
+              >
+                <AccordionTrigger className="font-bold text-foreground text-left hover:no-underline py-5">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-5">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
         </div>
       </div>
     </section>
