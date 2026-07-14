@@ -105,6 +105,18 @@ const LegoGuide = () => {
     }
   };
 
+  /* Escape always minimizes, so there is never a state you cannot get
+     out of, even mid-animation or after a resize. */
+  useEffect(() => {
+    if (!bubbleOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') minimize();
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bubbleOpen]);
+
   const handleCta = (tip: Tip) => {
     const { action, target } = tip.cta;
     if (action === 'contact') openContact('lego-guide');
@@ -116,33 +128,32 @@ const LegoGuide = () => {
 
   return (
     <div className="fixed bottom-0 right-3 sm:right-5 z-50 flex flex-col items-end select-none">
-      {/* Speech bubble */}
-      <div
-        className={`mb-2 mr-2 max-w-[260px] transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
-          bubbleOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-3 scale-95 pointer-events-none'
-        }`}
-      >
-        <div className="relative rounded-2xl bg-card shadow-island p-4 pr-9">
-          <button
-            type="button"
-            onClick={minimize}
-            aria-label="Minimize"
-            title="Minimize"
-            className="absolute top-2.5 right-2.5 text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <Minus className="w-4 h-4" />
-          </button>
-          <p className="text-sm text-foreground leading-snug font-semibold">{tip.text}</p>
-          <button
-            type="button"
-            onClick={() => handleCta(tip)}
-            className="mt-3 inline-flex items-center rounded-full bg-primary text-primary-foreground text-xs font-bold px-3.5 py-1.5 hover:bg-primary-hover transition-colors"
-          >
-            {tip.cta.label}
-          </button>
-          <span className="absolute -bottom-1.5 right-9 w-3 h-3 bg-card rotate-45" />
+      {/* Speech bubble: fully unmounted when closed so it can never
+          swallow a click or hover behind the page. */}
+      {bubbleOpen && (
+        <div className="mb-2 mr-2 w-[min(260px,calc(100vw-2.5rem))] animate-clay-pop">
+          <div className="relative rounded-2xl bg-card shadow-island p-4 pr-10">
+            <button
+              type="button"
+              onClick={minimize}
+              aria-label="Minimize"
+              title="Minimize"
+              className="absolute top-2 right-2 p-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+            >
+              <Minus className="w-4 h-4" />
+            </button>
+            <p className="text-sm text-foreground leading-snug font-semibold">{tip.text}</p>
+            <button
+              type="button"
+              onClick={() => handleCta(tip)}
+              className="mt-3 inline-flex items-center rounded-full bg-primary text-primary-foreground text-xs font-bold px-3.5 py-1.5 hover:bg-primary-hover transition-colors"
+            >
+              {tip.cta.label}
+            </button>
+            <span className="absolute -bottom-1.5 right-9 w-3 h-3 bg-card rotate-45" />
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Avatar: always present, tap to open/close */}
       <button

@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
-import { X, CalendarClock, Send } from 'lucide-react';
+import { X, Send } from 'lucide-react';
 import { useContactDialog } from './contact-dialog';
 import { nudgeBus } from '@/lib/nudge-bus';
 
 /* A contextual pop-up that nudges the visitor to the contact form.
-   Placed at specific spots and triggered by scrolling into view or by
-   exit intent. Lives at the bottom-LEFT so it never overlaps the Lego
-   guide (bottom-right), and coordinates via nudgeBus so the two never
-   speak at once. Dismissible per session. */
+   Rules that keep it from ever fighting the Lego chat guide:
+   - Desktop only. On narrow screens the guide is the only nudge, so
+     nothing can collide or trap the user.
+   - Bottom-left, while the guide owns bottom-right.
+   - Coordinated through nudgeBus, so only one speaks at a time.
+   - When hidden it is fully unmounted, so it can never swallow clicks. */
 
 type Trigger = 'inview' | 'exit';
 
@@ -18,11 +20,15 @@ interface RoamingPromptProps {
   delay?: number;
 }
 
+/* Below this width there is not enough room for two floating things. */
+const MIN_WIDTH = 1024;
+
 const seenKey = (id: string) => `roam-${id}`;
 
 const RoamingPrompt = ({ id, text, trigger = 'inview', delay = 800 }: RoamingPromptProps) => {
   const { open: openContact } = useContactDialog();
   const [show, setShow] = useState(false);
+  const [wideEnough, setWideEnough] = useState(false);
   const anchorRef = useRef<HTMLDivElement>(null);
   const firedRef = useRef(false);
   const busId = `roam-${id}`;
@@ -43,10 +49,30 @@ const RoamingPrompt = ({ id, text, trigger = 'inview', delay = 800 }: RoamingPro
     }
   };
 
+  const hide = () => {
+    setShow(false);
+    nudgeBus.release(busId);
+  };
+
+  /* Track viewport width. If the window shrinks below the threshold
+     while a prompt is open, retract it immediately so it can never end
+     up stuck on top of the guide. */
+  useEffect(() => {
+    const check = () => {
+      const wide = window.innerWidth >= MIN_WIDTH;
+      setWideEnough(wide);
+      if (!wide) hide();
+    };
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const tryShow = () => {
     if (alreadySeen()) return;
+    if (window.innerWidth < MIN_WIDTH) return;
     if (!nudgeBus.claim(busId)) {
-      // guide or another prompt is talking; wait for the stage to free
       const unsub = nudgeBus.subscribe(() => {
         unsub();
         tryShow();
@@ -81,7 +107,7 @@ const RoamingPrompt = ({ id, text, trigger = 'inview', delay = 800 }: RoamingPro
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trigger]);
 
-  // Exit-intent trigger (desktop)
+  // Exit-intent trigger (desktop only by nature)
   useEffect(() => {
     if (trigger !== 'exit' || alreadySeen()) return;
     const onLeave = (e: MouseEvent) => {
@@ -92,13 +118,23 @@ const RoamingPrompt = ({ id, text, trigger = 'inview', delay = 800 }: RoamingPro
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [trigger]);
 
+  // Escape closes it, so there is always a way out
+  useEffect(() => {
+    if (!show) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') dismiss();
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [show]);
+
   // Release the stage on unmount
   useEffect(() => () => nudgeBus.release(busId), [busId]);
 
   const dismiss = () => {
-    setShow(false);
     markSeen();
-    nudgeBus.release(busId);
+    hide();
   };
 
   const act = () => {
@@ -110,33 +146,35 @@ const RoamingPrompt = ({ id, text, trigger = 'inview', delay = 800 }: RoamingPro
     <>
       {trigger === 'inview' && <div ref={anchorRef} aria-hidden="true" className="h-0 w-0" />}
 
-      <div
-        className={`fixed z-40 left-4 bottom-6 max-w-[300px] transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
-          show ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-95 pointer-events-none'
-        }`}
-        role="dialog"
-        aria-hidden={!show}
-      >
-        <div className="relative rounded-2xl bg-card shadow-island p-5 pr-9 border-2 border-primary/10">
-          <button
-            type="button"
-            onClick={dismiss}
-            aria-label="Dismiss"
-            className="absolute top-2.5 right-2.5 text-muted-foreground hover:text-foreground transition-colors"
-          >
-            <X className="w-4 h-4" />
-          </button>
-          <p className="text-sm font-semibold text-foreground leading-snug mb-3">{text}</p>
-          <button
-            type="button"
-            onClick={act}
-            className="inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground text-xs font-bold px-3.5 py-2 hover:bg-primary-hover transition-colors"
-          >
-            <Send className="w-3.5 h-3.5" />
-            Let's build something
-          </button>
+      {/* Fully unmounted when hidden or on narrow screens, so it can
+          never intercept a click or trap the user. */}
+      {show && wideEnough && (
+        <div
+          className="fixed z-40 left-4 bottom-6 w-[290px] animate-clay-pop"
+          role="dialog"
+          aria-label="Message from Daniyal"
+        >
+          <div className="relative rounded-2xl bg-card shadow-island p-5 pr-10 border-2 border-primary/10">
+            <button
+              type="button"
+              onClick={dismiss}
+              aria-label="Dismiss"
+              className="absolute top-2 right-2 p-1.5 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+            <p className="text-sm font-semibold text-foreground leading-snug mb-3">{text}</p>
+            <button
+              type="button"
+              onClick={act}
+              className="inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground text-xs font-bold px-3.5 py-2 hover:bg-primary-hover transition-colors"
+            >
+              <Send className="w-3.5 h-3.5" />
+              Let's build something
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };
