@@ -67,17 +67,23 @@ const TestimonialsPage = () => {
         {TESTIMONIALS.length > 0 && (
           <section className="py-16 bg-muted/50 border-y border-border">
             <div className="container mx-auto px-6">
-              <div className="max-w-3xl mx-auto space-y-6">
-                <h2 className="text-2xl font-bold font-heading tracking-tight">In their words</h2>
-                {TESTIMONIALS.map((t) => (
-                  <figure key={t.name} className="rounded-xl bg-card border border-border shadow-sm p-6">
-                    <Quote className="w-5 h-5 text-primary mb-3" />
-                    <blockquote className="text-foreground/90 leading-relaxed mb-4">{t.quote}</blockquote>
-                    <figcaption className="text-sm text-muted-foreground">
-                      <span className="font-medium text-foreground">{t.name}</span> · {t.role}, {t.company}
-                    </figcaption>
-                  </figure>
-                ))}
+              <div className="max-w-3xl mx-auto">
+                <h2 className="text-2xl font-bold font-heading tracking-tight mb-2">In their words</h2>
+                <p className="text-sm text-muted-foreground mb-8">
+                  From business owners who ran systems I built. Names withheld, since they are
+                  clients of the firm I build for.
+                </p>
+                <div className="space-y-5">
+                  {TESTIMONIALS.map((t) => (
+                    <figure key={t.attribution} className="rounded-2xl bg-card shadow-card p-6">
+                      <Quote className="w-5 h-5 text-primary mb-3" />
+                      <blockquote className="text-foreground/90 leading-relaxed mb-4">{t.quote}</blockquote>
+                      <figcaption className="text-sm font-semibold text-muted-foreground">
+                        {t.attribution}
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
               </div>
             </div>
           </section>
