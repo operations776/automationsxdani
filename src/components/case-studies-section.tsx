@@ -49,7 +49,7 @@ const CASE_STUDIES: CaseStudy[] = [
     stack: ['OpenAI', 'Xero API', 'PDF parsing', 'PostgreSQL', 'n8n'],
     demo: <InvoiceFlow />,
     proof: {
-      image: 'projects/xero-invoices.jpg',
+      image: 'projects/xero-invoices-full.png',
       title: 'Multi-entity invoice processing, the actual build',
       caption:
         'The live workflow: invoice intake, AI extraction, entity matching, GL and tax assignment, and the Xero submission, with the error handling that keeps it running unattended.',
@@ -70,7 +70,7 @@ const CASE_STUDIES: CaseStudy[] = [
     stack: ['ManyChat', 'OpenAI', 'Casepeer', 'Instagram API', 'n8n'],
     demo: <LegalIntakeFlow />,
     proof: {
-      image: 'projects/lead-intake-law.jpg',
+      image: 'projects/lead-intake-law-full.png',
       title: 'Legal intake automation, the actual build',
       caption:
         'The live workflow: ManyChat capture across Instagram, TikTok, and Messenger, AI qualification and reply drafting, the evidence collection branch, follow-up sequences, and Casepeer filing.',
