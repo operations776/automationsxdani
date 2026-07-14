@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Mail } from 'lucide-react';
 import HeroVisual from './hero-visual';
-import ClayScene from './clay-scene';
 import ToolLogo from './tool-logo';
 import RoamingPrompt from './roaming-prompt';
 import { useContactDialog } from './contact-dialog';
+import { asset } from '@/lib/asset';
 
 const stats = [
   { value: '20+', label: 'Claude agent workspaces shipped' },
@@ -20,9 +20,9 @@ const HeroSection = () => {
       {/* soft fade into the next section so the hero doesn't end abruptly */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background" />
 
-      <div className="container relative z-10 mx-auto px-6 pt-28 pb-16 md:pt-36">
-        {/* Top: pitch over the clay landscape */}
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-center max-w-6xl mx-auto">
+      <div className="container relative z-10 mx-auto px-6 pt-28 pb-20 md:pt-36 md:pb-24">
+        <div className="grid lg:grid-cols-2 gap-14 lg:gap-10 items-center max-w-6xl mx-auto">
+          {/* Left: the pitch */}
           <div className="space-y-7 animate-clay-pop">
             <a
               href="https://www.recruitergtm.com"
@@ -83,21 +83,26 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right: the clay landscape */}
-          <div className="animate-clay-pop hidden lg:block" style={{ animationDelay: '140ms' }}>
-            <ClayScene />
-          </div>
-        </div>
+          {/* Right: the operator and his control room. The live ops manager
+              demo is the hero visual; Daniyal presents it. */}
+          <div
+            className="relative animate-clay-pop pl-10 sm:pl-16 lg:pl-14"
+            style={{ animationDelay: '140ms' }}
+          >
+            <HeroVisual />
+            <p className="text-xs text-muted-foreground mt-3 text-center font-semibold">
+              This is what one client's AI ops manager does on an ordinary morning.
+            </p>
 
-        {/* Below: the interactive proof */}
-        <div className="max-w-3xl mx-auto mt-16 md:mt-20 animate-clay-pop" style={{ animationDelay: '220ms' }}>
-          <p className="text-center text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">
-            A Claude ops manager, mid-shift
-          </p>
-          <HeroVisual />
-          <p className="text-xs text-muted-foreground mt-3 text-center font-semibold">
-            This is what one client's AI ops manager does on an ordinary morning.
-          </p>
+            {/* The presenting figure, standing at the corner of the demo */}
+            <img
+              src={asset('daniyal-lego-presenting.png')}
+              alt=""
+              aria-hidden="true"
+              loading="eager"
+              className="absolute -left-1 sm:left-0 -bottom-1 w-24 sm:w-32 lg:w-36 z-10 drop-shadow-2xl pointer-events-none select-none"
+            />
+          </div>
         </div>
       </div>
 
