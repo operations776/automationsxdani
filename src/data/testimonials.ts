@@ -6,11 +6,19 @@
    Never add a quote nobody actually said. */
 
 export interface Testimonial {
+  /* Their actual words. Verbatim, lightly trimmed. Never invented. */
   quote: string;
   /* Anonymised attribution: who they are, not their name. */
   attribution: string;
-  /* Where they said it, so the claim is traceable internally. */
+  /* The honest emotional state they described before the work landed.
+     Drawn from what they said, not imagined for them. */
+  before: string;
+  /* The turn: what shifted for them. */
+  after: string;
+  /* Where they said it, so every claim stays traceable internally. */
   context?: string;
+  /* Colour for the avatar mark, so each person reads as an individual. */
+  tone: 'coral' | 'sky' | 'mint' | 'butter' | 'grape';
 }
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -18,25 +26,37 @@ export const TESTIMONIALS: Testimonial[] = [
     quote:
       'Daniyal just massively helped me out on Claude Code. I was pretty close to packing it in and going for a non AI native solution and he smashed it. Good job dude, thanks.',
     attribution: 'Recruitment business owner',
+    before: 'Ready to give up on AI entirely',
+    after: 'Stayed, and shipped it',
     context: 'After a rescue session on a Claude build he was about to abandon',
-  },
-  {
-    quote:
-      'A call with Daniyal pieced everything together. I really needed that.',
-    attribution: 'Founder, recruitment firm',
-    context: 'On a walkthrough of his Claude setup',
+    tone: 'coral',
   },
   {
     quote:
       'I was shocked by the speed with which we received responses. This is the first time I had a positive reply using cold email. I have tried to get results with cold email for years and never saw a result. Thank you for helping us get it set up.',
     attribution: 'Founder, US recruitment firm',
+    before: 'Years of cold email, never a single result',
+    after: 'A real reply within the hour',
     context: 'On the cold email infrastructure and campaign setup',
+    tone: 'sky',
+  },
+  {
+    quote:
+      'A call with Daniyal pieced everything together. I really needed that.',
+    attribution: 'Founder, recruitment firm',
+    before: 'Pieces everywhere, nothing clicking',
+    after: 'It finally made sense',
+    context: 'On a walkthrough of his Claude setup',
+    tone: 'mint',
   },
   {
     quote:
       'I got a booked call for a VP search today from my video email campaign. They said it was the most unique way to present a candidate.',
     attribution: 'Owner, executive search firm',
+    before: 'Another campaign that would probably go nowhere',
+    after: 'A booked call, and a prospect who noticed',
     context: 'On the video email campaign system',
+    tone: 'butter',
   },
 ];
 

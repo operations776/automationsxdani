@@ -2,7 +2,7 @@
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { SERVICES } from '@/data/services';
-import { RESULTS } from '@/data/testimonials';
+import { TESTIMONIALS } from '@/data/testimonials';
 
 /* Home page teasers: enough to hook, with the depth living on
    dedicated pages. */
@@ -87,23 +87,36 @@ const HomeTeasers = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <div className="max-w-xl mb-10">
-              <p className="text-xs font-extrabold uppercase tracking-widest text-primary mb-3">Results</p>
+              <p className="text-xs font-extrabold uppercase tracking-widest text-primary mb-3">In their words</p>
               <h2 className="text-3xl md:text-4xl font-bold font-heading tracking-tight">
-                What businesses actually got
+                People were stuck. Then they weren't.
               </h2>
             </div>
-            <div className="grid md:grid-cols-3 gap-5 mb-8">
-              {RESULTS.slice(0, 3).map((result) => (
-                <div key={result.headline} className="rounded-2xl bg-card shadow-card p-6 clay-lift">
-                  <p className="text-4xl font-extrabold font-heading text-primary mb-2">{result.metric}</p>
-                  <h3 className="font-bold text-foreground text-sm mb-2">{result.headline}</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{result.detail}</p>
-                </div>
+
+            {/* Lead with the human voice, not a stat block */}
+            <div className="grid md:grid-cols-2 gap-5 mb-8">
+              {TESTIMONIALS.slice(0, 2).map((t) => (
+                <figure key={t.quote.slice(0, 24)} className="rounded-2xl bg-card shadow-card p-7 clay-lift flex flex-col">
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mb-4 text-[11px] font-bold">
+                    <span className="text-muted-foreground line-through decoration-muted-foreground/40">
+                      {t.before}
+                    </span>
+                    <ArrowRight className="w-3 h-3 text-primary shrink-0" />
+                    <span className="text-primary">{t.after}</span>
+                  </div>
+                  <blockquote className="text-lg font-heading font-semibold text-foreground leading-snug mb-5 flex-1">
+                    "{t.quote}"
+                  </blockquote>
+                  <figcaption className="text-xs font-semibold text-muted-foreground">
+                    {t.attribution}
+                  </figcaption>
+                </figure>
               ))}
             </div>
+
             <Button variant="outline" asChild className="border-border hover:border-primary hover:text-primary">
               <Link to="/testimonials">
-                See all results and testimonials
+                Read what people said
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Link>
             </Button>
