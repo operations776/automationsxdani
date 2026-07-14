@@ -63,22 +63,22 @@ const TestimonialsPage = () => {
         {/* The quotes, front and centre */}
         <section className="py-20">
           <div className="container mx-auto px-6">
-            <div className="max-w-3xl mx-auto space-y-8">
+            <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
               {TESTIMONIALS.map((t) => (
                 <figure
                   key={t.attribution + t.quote.slice(0, 20)}
-                  className="rounded-3xl bg-card shadow-card p-7 md:p-9 clay-lift"
+                  className="rounded-3xl bg-card shadow-card p-7 clay-lift flex flex-col"
                 >
                   {/* The emotional turn */}
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-5 text-xs font-bold">
+                  <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 mb-5 text-[11px] font-bold">
                     <span className="text-muted-foreground line-through decoration-muted-foreground/40">
                       {t.before}
                     </span>
-                    <ArrowRight className="w-3.5 h-3.5 text-primary shrink-0" />
+                    <ArrowRight className="w-3 h-3 text-primary shrink-0" />
                     <span className="text-primary">{t.after}</span>
                   </div>
 
-                  <blockquote className="text-xl md:text-2xl font-heading font-semibold text-foreground leading-snug mb-6">
+                  <blockquote className="text-lg md:text-xl font-heading font-semibold text-foreground leading-snug mb-6 flex-1">
                     "{t.quote}"
                   </blockquote>
 
