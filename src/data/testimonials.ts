@@ -16,15 +16,27 @@ export interface Testimonial {
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "I was shocked by the speed with which we received responses. This is the first time I had a positive reply using cold email. I have tried to get results with cold email for years and never saw a result. Thank you for helping us get it set up.",
+      'Daniyal just massively helped me out on Claude Code. I was pretty close to packing it in and going for a non AI native solution and he smashed it. Good job dude, thanks.',
+    attribution: 'Recruitment business owner',
+    context: 'After a rescue session on a Claude build he was about to abandon',
+  },
+  {
+    quote:
+      'A call with Daniyal pieced everything together. I really needed that.',
+    attribution: 'Founder, recruitment firm',
+    context: 'On a walkthrough of his Claude setup',
+  },
+  {
+    quote:
+      'I was shocked by the speed with which we received responses. This is the first time I had a positive reply using cold email. I have tried to get results with cold email for years and never saw a result. Thank you for helping us get it set up.',
     attribution: 'Founder, US recruitment firm',
-    context: 'On the cold email infrastructure and campaign setup, community post',
+    context: 'On the cold email infrastructure and campaign setup',
   },
   {
     quote:
       'I got a booked call for a VP search today from my video email campaign. They said it was the most unique way to present a candidate.',
     attribution: 'Owner, executive search firm',
-    context: 'On the video email campaign system, community post',
+    context: 'On the video email campaign system',
   },
 ];
 
@@ -66,10 +78,28 @@ export const RESULTS: ResultCard[] = [
       'Cross-channel reply protection stops every sequence for a person the moment they reply anywhere.',
   },
   {
+    metric: 'Rescued',
+    headline: 'A Claude build that was about to be abandoned',
+    detail:
+      'An owner was ready to give up on the AI-native approach entirely and fall back to a manual solution. One session on the hard parts and the system shipped. He stayed on Claude.',
+  },
+  {
     metric: 'First reply',
     headline: 'Cold email that finally landed',
     detail:
       'A firm that had tried cold email for years without a single result got a positive prospect reply within an hour of their first campaign going live on the infrastructure I set up.',
+  },
+  {
+    metric: 'Connected',
+    headline: 'Claude wired directly into the ATS',
+    detail:
+      'I built and documented the bridge that lets Claude search, tag, enrich, and update candidates inside Recruiterflow without anyone clicking through the interface. Handed over so other recruiters could run it themselves.',
+  },
+  {
+    metric: 'Scheduled',
+    headline: 'Agents that run without anyone opening the app',
+    detail:
+      'Claude jobs that fire on their own schedule, every morning or every Monday, and drop the output into Gmail, Slack, or Notion. The work happens whether you are at your desk or not.',
   },
   {
     metric: 'Booked',
