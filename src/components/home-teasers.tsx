@@ -14,9 +14,9 @@ const CASES = [
     line: 'A Claude agent that sources, sells, writes, and reports in your own stack. 20+ shipped.',
   },
   {
-    id: 'reply-sync',
-    title: 'Reply protection across email and LinkedIn',
-    line: 'Someone replies on one channel, every other sequence stops in seconds.',
+    id: 'invoice-processing',
+    title: 'A bookkeeping firm, replaced by a pipeline',
+    line: 'Four entities, four continents, 20 invoices a day. AI reads, codes, and files every one.',
   },
   {
     id: 'pulse-tracker',

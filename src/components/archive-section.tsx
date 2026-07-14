@@ -17,30 +17,6 @@ interface ArchiveProject {
 
 const PROJECTS: ArchiveProject[] = [
   {
-    id: 'legal-intake',
-    title: 'Legal tech intake automation',
-    description: 'DM-to-case intake for law firms: ManyChat capture, AI-drafted replies, follow-up sequences, Casepeer filing.',
-    detail: [
-      'Law firm leads start as DMs. ManyChat captured incoming messages from Instagram, TikTok, and Facebook Messenger, and AI drafted the responses so nobody sat waiting on a paralegal.',
-      'Leads that went quiet entered follow-up sequences tuned per channel. Leads that engaged flowed into a full intake sequence: case details collected step by step, evidence gathered, everything filed into Casepeer.',
-      'The firm only spent human time on qualified, documented claimants.',
-    ],
-    technologies: ['ManyChat', 'n8n', 'OpenAI', 'Casepeer', 'Meta channels'],
-    image: 'projects/lead-intake-law.jpg',
-  },
-  {
-    id: 'invoice-processing',
-    title: 'Multi-entity invoice processing',
-    description: 'Replaced an outsourced bookkeeping firm for a company running four entities across four continents.',
-    detail: [
-      'The client ran four entities across North America, South America, Europe, and Asia, with roughly 20 invoices landing every day and an external bookkeeping company processing them by hand.',
-      'The automation took the job over end to end: it receives each invoice, extracts the data, assigns the right GL code, account, and tax treatment for the right entity, and files it into Xero.',
-      'The separate bookkeeping company stopped being needed. Misroutes dropped to near zero.',
-    ],
-    technologies: ['n8n', 'OpenAI', 'Xero API', 'PostgreSQL'],
-    image: 'projects/xero-invoices.jpg',
-  },
-  {
     id: 'lead-unification',
     title: 'Leads to Odoo CRM pipeline',
     description: 'WordPress forms, ManyChat conversations, and Meta lead ads, all landing in one Odoo queue.',

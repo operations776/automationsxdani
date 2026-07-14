@@ -44,8 +44,8 @@ const WorkPage = () => {
                 Systems doing real work right now
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                AI ops managers, outbound infrastructure, and client-facing products, all shipped
-                and running. Yours would look like this.
+                AI ops managers, finance automation, outbound infrastructure, and client-facing
+                products. All shipped and running.
               </p>
             </div>
           </div>

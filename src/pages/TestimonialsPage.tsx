@@ -52,9 +52,8 @@ const TestimonialsPage = () => {
                 People were stuck. Then they weren't.
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                These are real messages from recruitment business owners who ran systems I built.
-                Their words, not mine. Names withheld, because they are clients of the firm I
-                build for.
+                Real messages from business owners who ran the systems I built. Their words,
+                not mine.
               </p>
             </div>
           </div>

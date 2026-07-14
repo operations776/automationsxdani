@@ -219,7 +219,7 @@ export const POSTS: Post[] = [
     ],
     related: [
       { label: 'GTM engineering services', to: '/gtm-engineer' },
-      { label: 'See the reply protection demo', to: '/work#reply-sync' },
+      { label: 'See the systems I build', to: '/work' },
     ],
   },
   {

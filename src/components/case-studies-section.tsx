@@ -1,7 +1,8 @@
 ﻿import { ReactNode } from 'react';
 import { Badge } from '@/components/ui/badge';
 import DfyFlow from './demos/dfy-flow';
-import ReplySyncDiagram from './demos/reply-sync-diagram';
+import InvoiceFlow from './demos/invoice-flow';
+import LegalIntakeFlow from './demos/legal-intake-flow';
 import PulseTrackerDemo from './demos/pulse-tracker-demo';
 import AnglePicker from './demos/angle-picker';
 
@@ -31,18 +32,34 @@ const CASE_STUDIES: CaseStudy[] = [
     demo: <DfyFlow />,
   },
   {
-    id: 'reply-sync',
-    kicker: 'GTM infrastructure',
-    title: 'Reply protection across email and LinkedIn',
+    id: 'invoice-processing',
+    kicker: 'Flagship · Finance automation',
+    title: 'A bookkeeping firm, replaced by a pipeline',
     problem:
-      'The same leads run in cold email and LinkedIn campaigns at once. When someone replies on one channel and the other keeps messaging them, deals die.',
+      'A company ran four legal entities across North America, South America, Europe, and Asia, each with its own tax rules, and roughly 20 invoices a day flowing through all of them. An outsourced bookkeeping firm keyed it all in by hand.',
     points: [
-      'Matches on the person, not the campaign: leads split across many LinkedIn campaigns and pooled email sends still get caught.',
-      'A reply anywhere halts the other channel within seconds and routes positive replies straight to Slack.',
-      'Runs continuously across client accounts as part of the managed GTM layer.',
+      'AI reads every invoice: supplier, line items, currency, totals, straight from the PDF, however it is formatted.',
+      'It works out which of the four entities the invoice belongs to, then applies the correct GL code, account, and tax treatment for that region.',
+      'Filed into Xero automatically. Hours of manual entry became minutes, and misroutes fell to near zero.',
+      'The bookkeeping firm was no longer needed.',
     ],
-    stack: ['Instantly', 'HeyReach', 'Slack'],
-    demo: <ReplySyncDiagram />,
+    stack: ['OpenAI', 'Xero API', 'PDF parsing', 'PostgreSQL', 'n8n'],
+    demo: <InvoiceFlow />,
+  },
+  {
+    id: 'legal-intake',
+    kicker: 'Legal tech',
+    title: 'Case intake that runs at 2am',
+    problem:
+      'Law firms lose cases to slow replies. Someone messages at 2am after an accident, nobody answers until morning, and by then they have called a different firm.',
+    points: [
+      'Captures enquiries the moment they land, across Instagram, TikTok, and Messenger, through ManyChat.',
+      'AI qualifies the lead and drafts a reply in the firm\'s voice, then runs the full intake conversation.',
+      'Collects photos and documents as case evidence, and arms a follow-up sequence if the person goes quiet.',
+      'Files the whole case into the CRM, ready for a lawyer to pick up in the morning.',
+    ],
+    stack: ['ManyChat', 'OpenAI', 'Casepeer', 'Instagram API', 'n8n'],
+    demo: <LegalIntakeFlow />,
   },
   {
     id: 'pulse-tracker',
@@ -88,9 +105,8 @@ const CaseStudiesSection = ({ showHeader = true }: { showHeader?: boolean }) => 
                 Systems doing real work right now
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                I build these at RecruiterGTM for businesses that want their revenue ops to run
-                themselves: AI ops managers, outbound infrastructure, and client-facing products.
-                Everything here is shipped and running. Yours would look like this.
+                AI ops managers, finance automation, legal intake, outbound infrastructure, and
+                client-facing products. Everything here is shipped and running.
               </p>
             </div>
           )}

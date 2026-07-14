@@ -50,6 +50,10 @@ const LegoGuide = () => {
   const [tipIndex, setTipIndex] = useState(0);
   const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
 
+  /* The home page already has the presenting figure in the hero. A second
+     one in the corner is one Lego too many, so the guide sits this page out. */
+  const hiddenHere = pathname === '/';
+
   const tips = useMemo(() => {
     if (TIP_SETS[pathname]) return TIP_SETS[pathname];
     if (pathname.startsWith('/blog/')) return TIP_SETS['/blog'];
@@ -79,6 +83,8 @@ const LegoGuide = () => {
     nudgeBus.release(BUS_ID);
     setTipIndex(0);
 
+    if (hiddenHere) return;
+
     const cycle = (index: number) => {
       showBubble(index);
       timers.current.push(setTimeout(() => cycle((index + 1) % tips.length), NEXT_DELAY));
@@ -90,7 +96,7 @@ const LegoGuide = () => {
       nudgeBus.release(BUS_ID);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
+  }, [pathname, hiddenHere]);
 
   const minimize = () => {
     setBubbleOpen(false);
@@ -123,6 +129,8 @@ const LegoGuide = () => {
     else if (action === 'scroll' && target) document.getElementById(target)?.scrollIntoView({ behavior: 'smooth' });
     else if (action === 'link' && target) window.location.assign(target);
   };
+
+  if (hiddenHere) return null;
 
   const tip = tips[tipIndex];
 
