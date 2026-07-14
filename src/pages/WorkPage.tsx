@@ -45,12 +45,15 @@ const WorkPage = () => {
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
                 AI ops managers, outbound infrastructure, and client-facing products, all shipped
-                and running, anonymised where it needs to be. Yours would look like this.
+                and running. Yours would look like this.
               </p>
             </div>
           </div>
         </section>
 
+        {/* Recordings first: watching me walk through a real build is the
+            fastest way to judge the work. */}
+        <LoomSection />
         <CaseStudiesSection showHeader={false} />
         {/* After the demos, invite a call */}
         <RoamingPrompt
@@ -58,7 +61,6 @@ const WorkPage = () => {
           text="Seen enough? Let's talk about building one of these for your business."
           trigger="inview"
         />
-        <LoomSection />
         <EngagementsSection />
         <ArchiveSection />
 

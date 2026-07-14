@@ -90,8 +90,7 @@ const CaseStudiesSection = ({ showHeader = true }: { showHeader?: boolean }) => 
               <p className="text-muted-foreground text-lg leading-relaxed">
                 I build these at RecruiterGTM for businesses that want their revenue ops to run
                 themselves: AI ops managers, outbound infrastructure, and client-facing products.
-                Everything is shipped and running, anonymised where it needs to be. Yours would
-                look like this.
+                Everything here is shipped and running. Yours would look like this.
               </p>
             </div>
           )}

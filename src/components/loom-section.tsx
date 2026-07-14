@@ -43,7 +43,7 @@ const LoomSection = () => {
   const [active, setActive] = useState<LoomVideo | null>(null);
 
   return (
-    <section id="videos" className="py-24 bg-muted/50 border-y border-border">
+    <section id="videos" className="py-24 bg-muted/50 border-b border-border">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="max-w-2xl mb-12">
