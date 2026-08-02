@@ -40,15 +40,6 @@ export const TESTIMONIALS: Testimonial[] = [
   },
   {
     quote:
-      'I was shocked by the speed with which we received responses. This is the first time I had a positive reply using cold email. I have tried to get results with cold email for years and never saw a result. Thank you for helping us get it set up.',
-    attribution: 'Founder, US recruitment firm',
-    before: 'Years of cold email, never a single result',
-    after: 'A real reply within the hour',
-    context: 'On the cold email infrastructure and campaign setup',
-    tone: 'sky',
-  },
-  {
-    quote:
       'A call with Daniyal pieced everything together. I really needed that.',
     attribution: 'Founder, recruitment firm',
     before: 'Pieces everywhere, nothing clicking',
