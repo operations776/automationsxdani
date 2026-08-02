@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import Navigation from '@/components/ui/navigation';
 import Footer from '@/components/footer';
 import { Button } from '@/components/ui/button';
-import { Mail, ChevronRight, ArrowRight, ArrowDown } from 'lucide-react';
-import { TESTIMONIALS, RESULTS } from '@/data/testimonials';
+import { Mail, ChevronRight, ArrowRight } from 'lucide-react';
+import { TESTIMONIALS } from '@/data/testimonials';
 import { Seo, PERSON_SCHEMA, breadcrumbSchema } from '@/lib/seo';
 import { useContactDialog } from '@/components/contact-dialog';
 import RoamingPrompt from '@/components/roaming-prompt';
@@ -28,7 +28,7 @@ const TestimonialsPage = () => {
     <div className="min-h-screen bg-background">
       <Seo
         title="Testimonials | What People Said After Working With Daniyal Aziz"
-        description="Real words from recruitment business owners who ran systems I built: a Claude build rescued from abandonment, a first-ever cold email reply after years of nothing, and booked calls that changed how they sell."
+        description="In their own words: a co-founder who was about to give up on AI and stayed, a manager who trusted Daniyal under pressure, and the moment their systems finally started working."
         path="/testimonials"
         jsonLd={[
           breadcrumbSchema([
@@ -52,11 +52,12 @@ const TestimonialsPage = () => {
               </nav>
               <p className="text-xs font-extrabold uppercase tracking-widest text-primary mb-3">In their words</p>
               <h1 className="text-3xl md:text-5xl font-bold font-heading tracking-tight mb-4">
-                People were stuck. Then they weren't.
+                The moment it finally worked.
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Real messages from business owners who ran the systems I built. Their words,
-                not mine.
+                No metrics on this page. Just people, in their own words, on how it felt when
+                the thing they had been dreading, or had almost given up on, quietly started
+                working.
               </p>
             </div>
           </div>
@@ -81,32 +82,23 @@ const TestimonialsPage = () => {
           </div>
         </section>
 
-        {/* The LinkedIn recommendation, shown as the real thing */}
+        {/* The recommendation, shown as the real thing */}
         <section className="pt-6 pb-4">
           <div className="container mx-auto px-6">
             <div className="max-w-3xl mx-auto">
-              <div className="rounded-3xl bg-card shadow-card p-4 md:p-6">
-                <div className="flex items-center gap-2 mb-3 px-1">
-                  <ToolLogo src="linkedin.png" name="LinkedIn" size={18} />
-                  <span className="text-xs font-bold text-muted-foreground uppercase tracking-wide">
-                    LinkedIn recommendation
-                  </span>
-                  <a
-                    href="https://www.linkedin.com/in/daniyal-aziz-643309246/details/recommendations/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ml-auto text-xs font-bold text-primary hover:text-primary-hover"
-                  >
-                    Verify on LinkedIn
-                  </a>
-                </div>
+              <a
+                href="https://www.linkedin.com/in/daniyal-aziz-643309246/details/recommendations/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block rounded-3xl bg-card shadow-card p-3 md:p-4 clay-lift"
+              >
                 <img
                   src={asset('testimonials/mubashir-linkedin.png')}
-                  alt="LinkedIn recommendation from Mubashir Hamad, Co-founder at Xcorre, who managed Daniyal directly"
+                  alt="Recommendation from Mubashir Hamad, Co-founder at Xcorre, who managed Daniyal directly"
                   className="w-full h-auto rounded-xl border border-border"
                   loading="lazy"
                 />
-              </div>
+              </a>
             </div>
           </div>
         </section>
@@ -170,43 +162,24 @@ const TestimonialsPage = () => {
           </div>
         </section>
 
-        {/* Quiet proof strip, demoted below the human stuff */}
-        <section className="py-16 bg-muted/50 border-y border-border">
-          <div className="container mx-auto px-6">
-            <div className="max-w-5xl mx-auto">
-              <div className="flex items-center gap-2 mb-8">
-                <ArrowDown className="w-4 h-4 text-primary" />
-                <h2 className="text-sm font-extrabold uppercase tracking-widest text-primary">
-                  And what actually changed
-                </h2>
-              </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {RESULTS.map((result) => (
-                  <div key={result.headline} className="rounded-2xl bg-card shadow-sm p-5">
-                    <p className="text-2xl font-extrabold font-heading text-primary mb-1.5">{result.metric}</p>
-                    <h3 className="font-bold text-foreground text-sm mb-1.5">{result.headline}</h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{result.detail}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="py-16 bg-term-bg">
+        {/* CTA, kept warm */}
+        <section className="py-20 bg-term-bg">
           <div className="container mx-auto px-6 text-center space-y-6">
-            <h2 className="text-2xl md:text-4xl font-bold font-heading tracking-tight text-white">
-              Stuck on something? That is usually where I come in.
+            <h2 className="text-2xl md:text-4xl font-bold font-heading tracking-tight text-white max-w-2xl mx-auto">
+              You could be the next one telling this story.
             </h2>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <p className="text-term-dim max-w-xl mx-auto leading-relaxed">
+              Tell me what has been weighing on you. Worst case, you get an honest opinion. Best
+              case, it is the start of the thing that finally works.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
               <Button
                 size="lg"
                 onClick={() => openContact('testimonials')}
                 className="bg-primary text-primary-foreground hover:bg-primary-hover font-semibold px-8"
               >
                 <Mail className="mr-2 w-4 h-4" />
-                Tell me what is broken
+                Start a conversation
               </Button>
               <Button
                 size="lg"
@@ -215,7 +188,7 @@ const TestimonialsPage = () => {
                 className="border-term-border bg-transparent text-term-text hover:bg-term-surface hover:text-white px-8"
               >
                 <Link to="/work">
-                  See the systems
+                  See what I build
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </Button>

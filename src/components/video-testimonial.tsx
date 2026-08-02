@@ -76,9 +76,6 @@ const VideoTestimonial = ({
 
       {/* Attribution + pull quote */}
       <div className="p-7 md:p-9 flex flex-col justify-center">
-        <p className="text-[11px] font-extrabold uppercase tracking-widest text-primary mb-4">
-          Video testimonial
-        </p>
         <blockquote className="text-xl md:text-2xl font-heading font-semibold text-foreground leading-snug mb-6">
           "{pullQuote}"
         </blockquote>
