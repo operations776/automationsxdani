@@ -8,6 +8,7 @@ import { Seo, PERSON_SCHEMA, breadcrumbSchema } from '@/lib/seo';
 import { useContactDialog } from '@/components/contact-dialog';
 import RoamingPrompt from '@/components/roaming-prompt';
 import VideoTestimonial from '@/components/video-testimonial';
+import ToolLogo from '@/components/tool-logo';
 
 /* Avatar mark. Deliberately abstract, not a fabricated face or a fake
    name, because these are real people whose identities are withheld. */
@@ -88,29 +89,49 @@ const TestimonialsPage = () => {
                   key={t.attribution + t.quote.slice(0, 20)}
                   className="rounded-3xl bg-card shadow-card p-7 clay-lift flex flex-col"
                 >
-                  {/* The emotional turn */}
-                  <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 mb-5 text-[11px] font-bold">
-                    <span className="text-muted-foreground line-through decoration-muted-foreground/40">
-                      {t.before}
-                    </span>
-                    <ArrowRight className="w-3 h-3 text-primary shrink-0" />
-                    <span className="text-primary">{t.after}</span>
-                  </div>
+                  {/* The emotional turn, only for the stuck-then-unstuck stories */}
+                  {t.before && t.after && (
+                    <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1 mb-5 text-[11px] font-bold">
+                      <span className="text-muted-foreground line-through decoration-muted-foreground/40">
+                        {t.before}
+                      </span>
+                      <ArrowRight className="w-3 h-3 text-primary shrink-0" />
+                      <span className="text-primary">{t.after}</span>
+                    </div>
+                  )}
 
                   <blockquote className="text-lg md:text-xl font-heading font-semibold text-foreground leading-snug mb-6 flex-1">
                     "{t.quote}"
                   </blockquote>
 
                   <figcaption className="flex items-center gap-3">
-                    <span
-                      className={`w-10 h-10 rounded-full flex items-center justify-center font-heading font-extrabold text-sm shrink-0 ${
-                        TONES[t.tone] ?? TONES.coral
-                      }`}
-                      aria-hidden="true"
-                    >
-                      {t.attribution.charAt(0)}
-                    </span>
-                    <span className="text-sm font-semibold text-muted-foreground">{t.attribution}</span>
+                    {t.name ? (
+                      <span className="w-11 h-11 rounded-xl border border-border bg-card shadow-sm flex items-center justify-center overflow-hidden shrink-0">
+                        <ToolLogo src={t.companyLogo} name={t.company ?? t.name} size={28} />
+                      </span>
+                    ) : (
+                      <span
+                        className={`w-10 h-10 rounded-full flex items-center justify-center font-heading font-extrabold text-sm shrink-0 ${
+                          TONES[t.tone] ?? TONES.coral
+                        }`}
+                        aria-hidden="true"
+                      >
+                        {t.attribution.charAt(0)}
+                      </span>
+                    )}
+                    {t.name ? (
+                      <span className="min-w-0">
+                        <span className="block text-sm font-bold text-foreground leading-tight">{t.name}</span>
+                        <span className="block text-xs text-muted-foreground">
+                          {t.title}, {t.company}
+                        </span>
+                        {t.source && (
+                          <span className="block text-[10px] text-muted-foreground/80 mt-0.5">{t.source}</span>
+                        )}
+                      </span>
+                    ) : (
+                      <span className="text-sm font-semibold text-muted-foreground">{t.attribution}</span>
+                    )}
                   </figcaption>
                 </figure>
               ))}

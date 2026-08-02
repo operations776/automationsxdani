@@ -1,27 +1,46 @@
-/* Real client words only. Nothing here is invented.
-   These are verbatim (lightly trimmed) from recruitment business owners
-   in the RecruiterGTM community who used systems Daniyal built and
-   thanked him publicly. Names are withheld because they are clients of
-   RecruiterGTM, so attribution is by role and business type instead.
-   Never add a quote nobody actually said. */
+/* Real words only. Nothing here is invented.
+   Some people are named (public LinkedIn recommendations, on-record
+   colleagues); others are attributed by role because they are clients
+   of RecruiterGTM. Never add a quote nobody actually said. */
 
 export interface Testimonial {
   /* Their actual words. Verbatim, lightly trimmed. Never invented. */
   quote: string;
-  /* Anonymised attribution: who they are, not their name. */
+  /* Anonymised attribution: who they are, not their name. Used only when
+     the person is not named. */
   attribution: string;
   /* The honest emotional state they described before the work landed.
-     Drawn from what they said, not imagined for them. */
-  before: string;
+     Optional: only for the stuck-then-unstuck stories. */
+  before?: string;
   /* The turn: what shifted for them. */
-  after: string;
+  after?: string;
   /* Where they said it, so every claim stays traceable internally. */
   context?: string;
   /* Colour for the avatar mark, so each person reads as an individual. */
   tone: 'coral' | 'sky' | 'mint' | 'butter' | 'grape';
+  /* Named, on-record people. When present, the card shows the real
+     name, title, company, and logo instead of the anonymised mark. */
+  name?: string;
+  title?: string;
+  company?: string;
+  companyLogo?: string;
+  /* e.g. "LinkedIn recommendation", shown as a small provenance line. */
+  source?: string;
 }
 
 export const TESTIMONIALS: Testimonial[] = [
+  {
+    quote:
+      'What I valued most about Daniyal was his reliability under pressure. He never shied away from a challenging task and consistently delivered on time, regardless of how demanding the deadline was. That kind of dependability is rare, and it made a real difference to the team.',
+    attribution: 'Co-founder, Xcorre',
+    name: 'Mubashir Hamad',
+    title: 'Co-founder',
+    company: 'Xcorre',
+    companyLogo: 'xcorre.png',
+    source: 'LinkedIn recommendation · managed Daniyal directly',
+    context: 'LinkedIn recommendation, July 2026',
+    tone: 'sky',
+  },
   {
     quote:
       'Daniyal just massively helped me out on Claude Code. I was pretty close to packing it in and going for a non AI native solution and he smashed it. Good job dude, thanks.',
