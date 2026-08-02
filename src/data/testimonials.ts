@@ -56,24 +56,6 @@ export const TESTIMONIALS: Testimonial[] = [
     context: 'On a walkthrough of his Claude setup',
     tone: 'mint',
   },
-  {
-    quote:
-      'I got a booked call for a VP search today from my video email campaign. They said it was the most unique way to present a candidate.',
-    attribution: 'Owner, executive search firm',
-    before: 'Another campaign that would probably go nowhere',
-    after: 'A booked call, and a prospect who noticed',
-    context: 'On the video email campaign system',
-    tone: 'butter',
-  },
-  {
-    quote:
-      'Everyone else quoted us two weeks for this. Daniyal turned it around in three days.',
-    attribution: 'Delivery lead, AI consultancy',
-    before: 'Bracing for a two week wait',
-    after: 'Shipped in three days',
-    context: 'Trilles AI, on a client project delivery',
-    tone: 'grape',
-  },
 ];
 
 export interface ResultCard {
