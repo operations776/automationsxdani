@@ -217,6 +217,55 @@ export const SERVICES: ServiceData[] = [
     relatedSlugs: ['ai-automation-expert', 'gtm-engineer'],
     blogSlugs: ['claude-ai-ops-manager-for-recruitment', 'ai-automation-vs-hiring-ops'],
   },
+  {
+    slug: 'custom-software',
+    navLabel: 'Custom Software',
+    metaTitle: 'Custom Software Developer | Turn Your Idea Into a Product | Daniyal Aziz',
+    metaDescription:
+      'Custom software developer who ships real products: web apps, dashboards, client portals, and internal tools. Full stack, from a napkin idea to a live product your business runs on.',
+    kicker: 'Services · Custom software',
+    h1: 'Have an idea? I build it into a real product.',
+    sub: 'Not just automations. When your business needs an actual product, a web app, a dashboard, a client portal, an internal tool, I design it, build it, and ship it live. Full stack, end to end.',
+    signalsTitle: 'Signs you need this',
+    signals: [
+      'You have an idea for a tool or product but no one to actually build it.',
+      'Off-the-shelf software almost fits, and the gap is costing you every day.',
+      'Your team runs the business on spreadsheets that should have been an app a year ago.',
+    ],
+    deliverables: [
+      { title: 'Web apps and products', desc: 'Real, deployed applications with auth, databases, and dashboards. The same stack behind the products on this site.' },
+      { title: 'Client portals', desc: 'A branded place your clients log in to see progress, approve work, book calls, and stop chasing you for updates.' },
+      { title: 'Internal tools', desc: 'The dashboard, tracker, or admin panel your team needs, built around how you actually work.' },
+      { title: 'MVPs, fast', desc: 'A working first version to put in front of real users or investors, without a six-month agency timeline.' },
+      { title: 'AI-native features', desc: 'Where it helps, AI is built into the product itself: drafting, classifying, searching, deciding.' },
+      { title: 'Shipped and supported', desc: 'Deployed live on modern infrastructure, documented, and handed over so it keeps running.' },
+    ],
+    steps: [
+      { title: 'Scope', desc: 'A short call to turn the idea in your head into a clear, buildable first version.' },
+      { title: 'Build', desc: 'A working product in weeks, not months, with you seeing progress as it comes together.' },
+      { title: 'Ship', desc: 'Live, documented, and yours. Ongoing support if you want it.' },
+    ],
+    faqs: [
+      {
+        q: 'What kind of software do you build?',
+        a: 'Web apps, dashboards, client portals, internal tools, and MVPs. Recent builds include a full client portal with a booking engine, a multi-tenant SaaS product, and marketing sites with interactive demos and lead capture, all live in production.',
+      },
+      {
+        q: 'What stack do you use?',
+        a: 'Next.js, React, and TypeScript on the front, Supabase and Postgres for data and auth, deployed on Vercel. AI features are built with Claude and the Anthropic SDK. Modern, fast to build on, and cheap to run.',
+      },
+      {
+        q: 'How is this different from hiring an agency?',
+        a: 'You work directly with the person building it, so there is no account-manager layer, no telephone game, and no six-month timeline. Most first versions ship in weeks, and you own the code.',
+      },
+      {
+        q: 'I only have a rough idea. Is that enough?',
+        a: 'Yes. Turning a rough idea into a clear, buildable product is the first thing I do. Come with the problem, not the spec.',
+      },
+    ],
+    relatedSlugs: ['ai-automation-expert', 'ops-integrator'],
+    blogSlugs: ['ai-automation-vs-hiring-ops', 'what-does-a-gtm-engineer-do'],
+  },
 ];
 
 export const getService = (slug: string) => SERVICES.find((s) => s.slug === slug);

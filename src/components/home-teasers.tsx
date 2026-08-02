@@ -35,6 +35,7 @@ const SERVICE_LINES: Record<string, string> = {
   'gtm-engineer': 'Signal-based outbound and pipelines that fill themselves.',
   'ops-integrator': 'The tools you already pay for, finally talking to each other.',
   'claude-automation': 'Claude agents with skills, memory, and guardrails.',
+  'custom-software': 'Have an idea? I build it into a real, live product.',
 };
 
 const HomeTeasers = () => {
@@ -134,7 +135,7 @@ const HomeTeasers = () => {
                 How I can help
               </h2>
             </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {SERVICES.map((service) => (
                 <Link
                   key={service.slug}

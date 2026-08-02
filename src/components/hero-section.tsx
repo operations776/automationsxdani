@@ -44,10 +44,9 @@ const HeroSection = () => {
                 <span className="text-primary">revenue</span>, built to run themselves.
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed max-w-xl font-semibold">
-                I'm a GTM engineer and AI automation specialist. If your business runs on
-                manual ops, I turn them into agent-run infrastructure: AI ops managers,
-                outbound engines, onboarding automations, and the operations layer that
-                keeps it all running.
+                I'm a GTM engineer and AI automation specialist. I turn manual ops into
+                agent-run infrastructure, and when your business needs a real product, a web
+                app, a portal, an internal tool, I design it, build it, and ship it live.
               </p>
             </div>
 

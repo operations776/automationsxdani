@@ -30,6 +30,8 @@ export const PERSON_SCHEMA = {
     'AI automation',
     'GTM engineering',
     'Claude AI agents',
+    'Custom software development',
+    'Web app development',
     'Outbound systems',
     'Revenue operations',
     'ATS and CRM integrations',
