@@ -9,6 +9,7 @@ import { useContactDialog } from '@/components/contact-dialog';
 import RoamingPrompt from '@/components/roaming-prompt';
 import VideoTestimonial from '@/components/video-testimonial';
 import ToolLogo from '@/components/tool-logo';
+import { asset } from '@/lib/asset';
 
 /* Avatar mark. Deliberately abstract, not a fabricated face or a fake
    name, because these are real people whose identities are withheld. */
@@ -76,6 +77,36 @@ const TestimonialsPage = () => {
                 companyUrl="https://www.trillesai.com"
                 pullQuote="Daniyal isn't just about building code. I see the systems thinking, the system design thinking in him. I'd highly recommend him for any AI build."
               />
+            </div>
+          </div>
+        </section>
+
+        {/* The LinkedIn recommendation, shown as the real thing */}
+        <section className="pt-6 pb-4">
+          <div className="container mx-auto px-6">
+            <div className="max-w-3xl mx-auto">
+              <div className="rounded-3xl bg-card shadow-card p-4 md:p-6">
+                <div className="flex items-center gap-2 mb-3 px-1">
+                  <ToolLogo src="linkedin.png" name="LinkedIn" size={18} />
+                  <span className="text-xs font-bold text-muted-foreground uppercase tracking-wide">
+                    LinkedIn recommendation
+                  </span>
+                  <a
+                    href="https://www.linkedin.com/in/daniyal-aziz-643309246/details/recommendations/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-auto text-xs font-bold text-primary hover:text-primary-hover"
+                  >
+                    Verify on LinkedIn
+                  </a>
+                </div>
+                <img
+                  src={asset('testimonials/mubashir-linkedin.png')}
+                  alt="LinkedIn recommendation from Mubashir Hamad, Co-founder at Xcorre, who managed Daniyal directly"
+                  className="w-full h-auto rounded-xl border border-border"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </section>

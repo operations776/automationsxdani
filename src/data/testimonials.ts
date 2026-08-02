@@ -31,18 +31,6 @@ export interface Testimonial {
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      'What I valued most about Daniyal was his reliability under pressure. He never shied away from a challenging task and consistently delivered on time, regardless of how demanding the deadline was. That kind of dependability is rare, and it made a real difference to the team.',
-    attribution: 'Co-founder, Xcorre',
-    name: 'Mubashir Hamad',
-    title: 'Co-founder',
-    company: 'Xcorre',
-    companyLogo: 'xcorre.png',
-    source: 'LinkedIn recommendation · managed Daniyal directly',
-    context: 'LinkedIn recommendation, July 2026',
-    tone: 'sky',
-  },
-  {
-    quote:
       'Daniyal just massively helped me out on Claude Code. I was pretty close to packing it in and going for a non AI native solution and he smashed it. Good job dude, thanks.',
     attribution: 'Recruitment business owner',
     before: 'Ready to give up on AI entirely',
