@@ -7,6 +7,7 @@ import { TESTIMONIALS, RESULTS } from '@/data/testimonials';
 import { Seo, PERSON_SCHEMA, breadcrumbSchema } from '@/lib/seo';
 import { useContactDialog } from '@/components/contact-dialog';
 import RoamingPrompt from '@/components/roaming-prompt';
+import VideoTestimonial from '@/components/video-testimonial';
 
 /* Avatar mark. Deliberately abstract, not a fabricated face or a fake
    name, because these are real people whose identities are withheld. */
@@ -59,8 +60,27 @@ const TestimonialsPage = () => {
           </div>
         </section>
 
-        {/* The quotes, front and centre */}
-        <section className="py-20">
+        {/* Featured: the video testimonial */}
+        <section className="pt-16 pb-4">
+          <div className="container mx-auto px-6">
+            <div className="max-w-5xl mx-auto">
+              <VideoTestimonial
+                src="testimonials/salman-trilles.mp4"
+                poster="testimonials/salman-trilles-poster.jpg"
+                captions="testimonials/salman-trilles.vtt"
+                name="Salman Ahmad"
+                title="Co-Founder"
+                company="Trilles AI"
+                companyLogo="trillesai.jpeg"
+                companyUrl="https://www.trillesai.com"
+                pullQuote="Daniyal isn't just about building code. I see the systems thinking, the system design thinking in him. I'd highly recommend him for any AI build."
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* The written quotes */}
+        <section className="py-16">
           <div className="container mx-auto px-6">
             <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
               {TESTIMONIALS.map((t) => (
