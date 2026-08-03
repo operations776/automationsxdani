@@ -106,6 +106,9 @@
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-body);
     font-weight: 500;
+    /* Guard against any rogue-wide element forcing a horizontal scroll
+       and making mobile browsers zoom the whole page out. */
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4 {

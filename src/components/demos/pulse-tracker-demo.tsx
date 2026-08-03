@@ -100,13 +100,13 @@ const PulseTrackerDemo = () => {
   return (
     <div className="rounded-xl bg-card border border-border shadow-card overflow-hidden">
       {/* Header */}
-      <div className="flex items-center gap-2.5 px-5 py-3.5 border-b border-border">
-        <span className="w-7 h-7 rounded-lg bg-primary text-primary-foreground flex items-center justify-center">
-          <Activity className="w-4 h-4" />
+      <div className="flex items-center gap-2.5 px-4 py-3 border-b border-border">
+        <span className="w-6 h-6 rounded-lg bg-primary text-primary-foreground flex items-center justify-center shrink-0">
+          <Activity className="w-3.5 h-3.5" />
         </span>
-        <div>
+        <div className="min-w-0">
           <p className="text-sm font-semibold text-foreground leading-tight">Pulse Tracker</p>
-          <p className="text-[10.5px] text-muted-foreground">The client portal for GTM service businesses</p>
+          <p className="text-[10px] text-muted-foreground truncate">The client portal for GTM service businesses</p>
         </div>
         <a
           href="https://pulse-tracker-site.vercel.app"
@@ -120,13 +120,13 @@ const PulseTrackerDemo = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-1.5 px-4 py-3 border-b border-border overflow-x-auto">
+      <div className="flex items-center gap-1.5 px-3 py-2.5 border-b border-border overflow-x-auto">
         {tabs.map((t) => (
           <button
             key={t.id}
             type="button"
             onClick={() => setTab(t.id)}
-            className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border whitespace-nowrap transition-colors shrink-0 ${
+            className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-medium border whitespace-nowrap transition-colors shrink-0 ${
               tab === t.id
                 ? 'bg-primary text-primary-foreground border-primary'
                 : 'border-border text-muted-foreground hover:border-primary hover:text-primary'
@@ -138,7 +138,7 @@ const PulseTrackerDemo = () => {
         ))}
       </div>
 
-      <div className="p-4 min-h-[320px]">
+      <div className="p-3.5 min-h-[230px] sm:min-h-[300px]">
         {/* Campaigns */}
         {tab === 'campaigns' && (
           <div className="space-y-3 animate-fade-up">
@@ -253,7 +253,7 @@ const PulseTrackerDemo = () => {
             </div>
             <div className="grid grid-cols-4 gap-2">
               {STAGES.map((stage, stageIndex) => (
-                <div key={stage} className="rounded-lg bg-muted/60 border border-border p-2 space-y-1.5 min-h-[120px]">
+                <div key={stage} className="rounded-lg bg-muted/60 border border-border p-1.5 space-y-1.5 min-h-[92px]">
                   <p className={`text-[9px] font-semibold uppercase tracking-wider ${stageIndex === 3 ? 'text-success' : 'text-muted-foreground'}`}>
                     {stage}
                   </p>
