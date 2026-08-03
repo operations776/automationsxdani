@@ -98,17 +98,27 @@
     @apply border-border;
   }
 
+  /* Guard against any rogue-wide element forcing a horizontal scroll and
+     making mobile browsers zoom the whole page out. clip is applied to
+     html, body, and #root because body-only clipping does nothing when
+     html is the scroll container. clip (not hidden) avoids creating a
+     scroll box, so it won't break sticky or smooth scrolling. */
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-body);
     font-weight: 500;
-    /* Guard against any rogue-wide element forcing a horizontal scroll
-       and making mobile browsers zoom the whole page out. */
-    overflow-x: hidden;
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  #root {
+    overflow-x: clip;
+    max-width: 100%;
   }
 
   h1, h2, h3, h4 {
