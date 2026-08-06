@@ -1,6 +1,7 @@
 import Navigation from '@/components/ui/navigation';
 import HeroSection from '@/components/hero-section';
 import HomeTeasers from '@/components/home-teasers';
+import HomeStack from '@/components/home-stack';
 import AboutSection from '@/components/about-section';
 import FaqSection, { HOME_FAQS } from '@/components/faq-section';
 import ContactSection from '@/components/contact-section';
@@ -21,6 +22,7 @@ const Index = () => {
       <main>
         <HeroSection />
         <HomeTeasers />
+        <HomeStack />
         <AboutSection />
         <FaqSection />
         <ContactSection />

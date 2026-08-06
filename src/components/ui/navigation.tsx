@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { to: '/work', label: 'Work' },
   { to: '/testimonials', label: 'Testimonials' },
   { to: '/blog', label: 'Blog' },
+  { to: '/#stack', label: 'Stack' },
   { to: '/#about', label: 'About' },
   { to: '/#contact', label: 'Contact' },
 ];
