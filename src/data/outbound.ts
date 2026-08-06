@@ -55,8 +55,8 @@ export const FUNNEL = [
 /* Headline counters. */
 export const HEADLINES = [
   { value: '26,538', label: 'Outbound touches delivered' },
+  { value: '32%', label: 'LinkedIn reply rate' },
   { value: '61', label: 'Campaigns built and run' },
-  { value: '959', label: 'Replies generated' },
   { value: '0.97%', label: 'Email bounce rate' },
 ];
 
