@@ -43,7 +43,8 @@ const CASE_STUDIES: CaseStudy[] = [
       'Most outbound dies from the boring stuff: burnt domains, stale lists, the same person hit on two channels at once, and nobody watching the numbers. I run it as infrastructure instead.',
     points: [
       'Over 26,500 touches delivered across email and LinkedIn, from 61 campaigns I built and run for client accounts.',
-      'Deliverability held at a 0.97% bounce rate, well under the 2% line where domains start getting punished. That is list hygiene and verification doing their job.',
+      'Every list is built in Clay first: enrichment waterfalls for verified emails, Claygent columns for real research, ICP scoring and dedupe before anyone gets messaged. Clay runs in 17 of the client stacks I manage.',
+      'Deliverability held at a 0.97% bounce rate, well under the 2% line where domains start getting punished. That is the data layer doing its job.',
       'LinkedIn converts: 22% of connection requests accepted, and 32% of the conversations that open get a reply.',
       'Every lead is deduplicated across channels, so nobody gets messaged twice, and a reply anywhere stops the sequence everywhere.',
     ],

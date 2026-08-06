@@ -87,7 +87,7 @@ export const SERVICES: ServiceData[] = [
     ],
     deliverables: [
       { title: 'TAM and list building', desc: 'Your total addressable market, segmented and scored, so every send has a reason.' },
-      { title: 'Enrichment waterfalls', desc: 'Clay-powered enrichment that finds verified emails and context your ads never could.' },
+      { title: 'Clay data layer', desc: 'Enrichment waterfalls that try provider after provider until a verified email comes back, Claygent research columns, and ICP scoring before anyone is messaged. Clay runs in 17 of the client stacks I manage.' },
       { title: 'Signal detection', desc: 'Funding rounds, hiring surges, leadership changes: outreach triggered when there is a real reason to talk.' },
       { title: 'Multichannel sequences', desc: 'Email and LinkedIn working the same list without stepping on each other.' },
       { title: 'Reply protection and routing', desc: 'A reply on one channel stops the other within seconds and lands in Slack for a human to close.' },

@@ -60,6 +60,21 @@ export const HEADLINES = [
   { value: '0.97%', label: 'Email bounce rate' },
 ];
 
+/* The data layer feeding all of it. Clay is where the lists get built,
+   enriched, and qualified before a single message goes out. */
+export const DATA_LAYER = {
+  tool: 'Clay',
+  logo: 'clay.png',
+  headline: 'Every list starts in Clay',
+  points: [
+    'Enrichment waterfalls that try provider after provider until a verified email comes back, so you only pay for hits and the bounce rate stays under 1%.',
+    'Claygent research columns that read a company site and write the one line of context an opener actually needs.',
+    'ICP scoring and dedupe before anything reaches a sequence, so nobody gets messaged twice or messaged wrongly.',
+    'Signal tables that watch for funding, hiring, and leadership changes, then push the fresh ones straight into campaigns.',
+  ],
+  stat: { value: '17', label: 'client stacks running Clay' },
+};
+
 /* Monthly LinkedIn activity, straight from the API day stats. Months with
    no sending are real gaps (campaigns paused), not missing data. */
 export interface TrendPoint {

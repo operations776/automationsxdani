@@ -23,6 +23,10 @@ export const HOME_FAQS = [
     a: 'Claude and the Claude Agent SDK for agents; Clay, Instantly, HeyReach, Lemlist, Apollo, and Exa for GTM; 10+ ATS and CRM platforms including Recruiterflow, Bullhorn, Loxo, and HubSpot; plus Next.js, Supabase, Slack, Notion, n8n, and Make.',
   },
   {
+    q: 'Do you build in Clay?',
+    a: 'Yes, Clay is the data layer under most of the outbound I run, and it is live in 17 of the client stacks I manage. That means enrichment waterfalls that try provider after provider until a verified email comes back, Claygent research columns that read a company and write real context, ICP scoring, dedupe, and signal tables that watch for funding and hiring changes. It is a large part of why the email bounce rate across those campaigns sits under 1%.',
+  },
+  {
     q: 'Do you work with businesses outside your timezone?',
     a: 'Yes. Daniyal works with businesses worldwide, remotely, and has delivered systems for clients across North America, Europe, Australia, and Asia.',
   },

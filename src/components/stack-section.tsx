@@ -36,7 +36,7 @@ const LAYERS: Layer[] = [
     icon: <Send className="w-4 h-4" />,
     blurb: 'Enrichment, outbound, and signals: the machinery that fills pipelines.',
     tools: [
-      { name: 'Clay', note: 'Enrichment tables and waterfalls', logo: 'clay.png' },
+      { name: 'Clay', note: 'Waterfalls, Claygent, signals. In 17 client stacks', logo: 'clay.png' },
       { name: 'Instantly', note: 'Cold email at scale', logo: 'instantly.png' },
       { name: 'HeyReach', note: 'LinkedIn outbound', logo: 'heyreach.png' },
       { name: 'Lemlist', note: 'Multichannel sequences', logo: 'lemlist.png' },

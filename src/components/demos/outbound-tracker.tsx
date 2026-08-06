@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { CHANNELS, FUNNEL, TREND, OUTBOUND_UPDATED } from '@/data/outbound';
+import { CHANNELS, FUNNEL, TREND, DATA_LAYER, OUTBOUND_UPDATED } from '@/data/outbound';
 import ToolLogo from '../tool-logo';
 
 /* The outbound tracker. Every number here came out of the HeyReach and
@@ -7,7 +7,7 @@ import ToolLogo from '../tool-logo';
    views: the two channels, the combined funnel, and the real month by
    month ramp. */
 
-type View = 'channels' | 'funnel' | 'trend';
+type View = 'channels' | 'data' | 'funnel' | 'trend';
 
 const OutboundTracker = () => {
   const [view, setView] = useState<View>('channels');
@@ -62,6 +62,7 @@ const OutboundTracker = () => {
 
   const views: { id: View; label: string }[] = [
     { id: 'channels', label: 'By channel' },
+    { id: 'data', label: 'Data layer' },
     { id: 'funnel', label: 'Funnel' },
     { id: 'trend', label: 'Monthly' },
   ];
@@ -129,6 +130,33 @@ const OutboundTracker = () => {
                 )}
               </div>
             ))}
+          </div>
+        )}
+
+        {/* Data layer: Clay */}
+        {view === 'data' && (
+          <div className="animate-clay-pop">
+            <div className="flex items-center gap-2.5 mb-3">
+              <ToolLogo src={DATA_LAYER.logo} name={DATA_LAYER.tool} size={22} />
+              <p className="text-sm font-bold text-foreground">{DATA_LAYER.headline}</p>
+              <span className="ml-auto text-right shrink-0">
+                <span className="block text-lg font-extrabold font-heading text-primary leading-none">
+                  {DATA_LAYER.stat.value}
+                </span>
+                <span className="block text-[9px] text-muted-foreground">{DATA_LAYER.stat.label}</span>
+              </span>
+            </div>
+            <ul className="space-y-2">
+              {DATA_LAYER.points.map((p) => (
+                <li key={p} className="flex gap-2.5 text-[11.5px] text-foreground/85 leading-relaxed">
+                  <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-3 pt-3 border-t border-border text-[10px] text-muted-foreground">
+              Bad data is why outbound fails. This layer is why the bounce rate stays under 1%.
+            </p>
           </div>
         )}
 
