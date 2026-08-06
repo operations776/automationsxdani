@@ -12,24 +12,50 @@ type View = 'channels' | 'funnel' | 'trend';
 const OutboundTracker = () => {
   const [view, setView] = useState<View>('channels');
   const [live, setLive] = useState(false);
+  const [seen, setSeen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  /* Animate bars in once the card is actually on screen. */
+  /* Reveal once the card is on screen. Falls back to showing everything
+     after a beat, so the charts can never be left empty if the observer
+     does not fire. */
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el) {
+      setSeen(true);
+      return;
+    }
+    if (typeof IntersectionObserver === 'undefined') {
+      setSeen(true);
+      return;
+    }
     const io = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          setLive(true);
+          setSeen(true);
           io.disconnect();
         }
       },
-      { threshold: 0.25 },
+      { threshold: 0.2 },
     );
     io.observe(el);
-    return () => io.disconnect();
+    const fallback = setTimeout(() => setSeen(true), 1200);
+    return () => {
+      io.disconnect();
+      clearTimeout(fallback);
+    };
   }, []);
+
+  /* Bars animate from zero, so they need a paint at 0% before growing.
+     Re-run on every view change too, otherwise a chart the visitor
+     switches to later mounts at zero and never grows. */
+  useEffect(() => {
+    if (!seen) return;
+    setLive(false);
+    const raf = requestAnimationFrame(() => {
+      requestAnimationFrame(() => setLive(true));
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [seen, view]);
 
   const maxTouches = Math.max(...TREND.map((t) => t.touches));
   const maxFunnel = FUNNEL[0].value;
