@@ -26,12 +26,13 @@ const ENGAGEMENTS: Engagement[] = [
     logo: 'recruitergtm.png',
     websiteUrl: 'https://www.recruitergtm.com',
     linkedinUrl: 'https://www.linkedin.com/company/recruitergtm',
-    period: '2026, ongoing',
+    period: 'Mar 2026, ongoing',
     ongoing: true,
     outcomes: [
+      'Run email and LinkedIn outbound across client accounts: 26,538 touches delivered from 61 campaigns, holding a 0.97% bounce rate, with replies on 32% of the LinkedIn conversations opened.',
+      'Built the Clay data layer under every campaign, now live in 17 client stacks: enrichment waterfalls for verified emails, Claygent research columns, ICP scoring, and signal tables watching for funding and hiring changes.',
       'Shipped 20+ Claude AI ops managers for their recruitment clients: sourcing shortlists that used to eat an afternoon now take minutes, with outreach drafted and waiting for approval.',
       'Cut client onboarding from a week of email back-and-forth to a same-day automated flow: intake form to routed Slack channels, kickoff docs, and secure API key handoff.',
-      'Run signal-based outbound across their client fleet: email and LinkedIn campaigns reaching 70%+ open rates and double-digit reply rates, feeding qualified sales conversations every month.',
       'Built Pulse Tracker, the client portal that killed the "any update?" email: campaign metrics, delivery roadmaps, placements, and approvals in one login, plus a booking engine that ended the Calendly bill.',
       'Turned company reporting from hours of channel-reading into automated weekly recaps of every client channel, keeping the source of truth accurate with zero chasing.',
       'Front-line technical support across a 70+ client operation: integrations and deliverability fixed before clients notice.',
@@ -45,7 +46,7 @@ const ENGAGEMENTS: Engagement[] = [
     logo: 'eynvision.webp',
     websiteUrl: 'https://www.eynvision.com',
     linkedinUrl: 'https://www.linkedin.com/company/eynvision',
-    period: '2025 to 2026',
+    period: 'Dec 2025 to Feb 2026',
     outcomes: [
       'Replaced a client\'s outsourced bookkeeping firm with an automated pipeline: roughly 20 invoices a day across four entities spanning North America, South America, Europe, and Asia.',
       'AI reads each invoice, extracts the data, assigns the right GL code, account, and tax treatment per entity, and files it into Xero. Misroutes near zero.',
@@ -59,7 +60,7 @@ const ENGAGEMENTS: Engagement[] = [
     logo: 'xcorre.png',
     websiteUrl: 'https://www.xcorre.com',
     linkedinUrl: 'https://www.linkedin.com/company/xcorre',
-    period: '2024 to 2026',
+    period: 'Oct 2025 to Mar 2026',
     outcomes: [
       'Took lead response from hours to minutes for a Canadian beverage brand by unifying Facebook Lead Ads, WordPress, and cold outreach into one pipeline, with zero leads dropped in triage.',
       'Put UK property management admin on autopilot with Reapit automation, freeing the team from daily data entry.',
@@ -74,7 +75,7 @@ const ENGAGEMENTS: Engagement[] = [
     logo: 'trillesai.jpeg',
     websiteUrl: 'https://www.trillesai.com',
     linkedinUrl: 'https://www.linkedin.com/company/trilles-ai',
-    period: '2024 to 2026',
+    period: 'Sep 2025 to Mar 2026',
     outcomes: [
       'Built legal intake that never sleeps: ManyChat capturing DMs across Instagram, TikTok, and Messenger, AI-drafted replies, follow-up sequences, and case evidence filed into Casepeer around the clock.',
       'Kept a European used-battery marketplace in sync with 10 to 20 eBay supplier stores: an agentic scraper cleared a week of manual listing work overnight, using reflection and planning patterns on Gemini.',
@@ -84,15 +85,37 @@ const ENGAGEMENTS: Engagement[] = [
     technologies: ['n8n', 'Gemini', 'Retell AI', 'Casepeer', 'Agentic patterns'],
   },
   {
+    id: 'chrio',
+    company: 'Chrio',
+    engagement: 'LLM hiring engine',
+    period: 'Jun 2025 to Sep 2025',
+    outcomes: [
+      'Built a candidate recommendation system that read resumes, LinkedIn profiles, and GitHub repos, then ranked shortlists against a job requisition so nobody screened by hand.',
+      'Benchmarked GPT-4, Gemini, and Claude on accuracy, latency, and cost to decide what actually went to production.',
+    ],
+    technologies: ['Python', 'GPT-4', 'Gemini', 'Claude', 'NLP parsing'],
+  },
+  {
     id: 'ttc',
     company: 'TTC',
     engagement: 'LinkedIn growth automation',
-    period: '2024',
+    period: 'Jul 2025 to Sep 2025',
     outcomes: [
       'Built LinkedIn lead generation that held response SLAs automatically through smart routing.',
       'Shipped a content pipeline publishing articles with AI-generated images, no writer in the loop.',
     ],
     technologies: ['n8n', 'PhantomBuster', 'OpenAI', 'Sales Navigator'],
+  },
+  {
+    id: 'algorizms',
+    company: 'Algorizms',
+    engagement: 'Database architecture',
+    period: 'Jul 2025 to Sep 2025',
+    outcomes: [
+      'Designed the database architecture for a fleet management system: relational schemas, constraints, and indexing built for real-time tracking and reporting.',
+      'Shipped it with schema versioning and role-based access control so multiple tenants could share it safely.',
+    ],
+    technologies: ['PostgreSQL', 'Supabase', 'Schema design'],
   },
 ];
 
