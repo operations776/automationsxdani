@@ -14,6 +14,11 @@ const CASES = [
     line: 'A Claude agent that sources, sells, writes, and reports in your own stack. 20+ shipped.',
   },
   {
+    id: 'outbound',
+    title: 'Outbound that actually lands',
+    line: '26,500+ touches across email and LinkedIn, at a 0.97% bounce rate. Real numbers, live from the tools.',
+  },
+  {
     id: 'invoice-processing',
     title: 'A bookkeeping firm, replaced by a pipeline',
     line: 'Four entities, four continents, 20 invoices a day. AI reads, codes, and files every one.',

@@ -1,6 +1,7 @@
 ﻿import { ReactNode } from 'react';
 import { Badge } from '@/components/ui/badge';
 import DfyFlow from './demos/dfy-flow';
+import OutboundTracker from './demos/outbound-tracker';
 import InvoiceFlow from './demos/invoice-flow';
 import LegalIntakeFlow from './demos/legal-intake-flow';
 import PulseTrackerDemo from './demos/pulse-tracker-demo';
@@ -33,6 +34,21 @@ const CASE_STUDIES: CaseStudy[] = [
     ],
     stack: ['Claude', 'Clay', 'Instantly', 'HeyReach', '10+ ATS platforms'],
     demo: <DfyFlow />,
+  },
+  {
+    id: 'outbound',
+    kicker: 'Flagship · Outbound engine',
+    title: 'Email and LinkedIn outbound, run as one machine',
+    problem:
+      'Most outbound dies from the boring stuff: burnt domains, stale lists, the same person hit on two channels at once, and nobody watching the numbers. I run it as infrastructure instead.',
+    points: [
+      'Over 26,500 touches delivered across email and LinkedIn, from 61 campaigns I built and run for client accounts.',
+      'Deliverability held at a 0.97% bounce rate, well under the 2% line where domains start getting punished. That is list hygiene and verification doing their job.',
+      'LinkedIn converts: 22% of connection requests accepted, and 32% of the conversations that open get a reply.',
+      'Every lead is deduplicated across channels, so nobody gets messaged twice, and a reply anywhere stops the sequence everywhere.',
+    ],
+    stack: ['Instantly', 'HeyReach', 'Clay', 'Apollo', 'Exa'],
+    demo: <OutboundTracker />,
   },
   {
     id: 'invoice-processing',

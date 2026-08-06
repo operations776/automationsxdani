@@ -8,9 +8,9 @@ import { useContactDialog } from './contact-dialog';
 import { asset } from '@/lib/asset';
 
 const stats = [
-  { value: '20+', label: 'Claude agent workspaces shipped' },
-  { value: '10+', label: 'ATS & CRM platforms integrated' },
-  { value: '50+', label: 'Production automations in the wild' },
+  { value: '20+', label: 'AI ops managers shipped' },
+  { value: '26.5k', label: 'Outbound touches delivered' },
+  { value: '50+', label: 'Production automations running' },
 ];
 
 const HeroSection = () => {
